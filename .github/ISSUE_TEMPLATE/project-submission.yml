@@ -9,7 +9,7 @@ body:
     attributes:
       value: |
         # Quickcode Project Submission
-        ![LOGO](https://raw.githubusercontent.com/iedccsemce/Quickcode2025/refs/heads/main/TITLE.png)
+        <img src="https://raw.githubusercontent.com/iedccsemce/Quickcode2025/refs/heads/main/TITLE.png" alt="Logo" width="250"/>
         Thank you for participating in Quickcode! 🚀  
         Fill out the title and the details below to submit your project for review.
 
