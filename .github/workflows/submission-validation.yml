@@ -48,7 +48,7 @@ jobs:
       - name: Check if PR is Late
         id: deadline-check
         run: |
-          DEADLINE="2025-02-02T13:30:00Z"
+          DEADLINE="2025-03-11T12:00:00Z"
           CURRENT_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
           if [[ "$CURRENT_TIME" > "$DEADLINE" ]]; then
