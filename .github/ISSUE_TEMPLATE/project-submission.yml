@@ -1,0 +1,82 @@
+name: "🚀 Project Submission"
+description: "Submit your project for the Hackathon"
+title: "[Submission]: <Your Project Name>"
+labels: ["project-submission"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 🎉 Hackathon Project Submission
+        Thank you for participating in the hackathon! 🚀  
+        Fill out the title and the details below to submit your project for review.
+
+  - type: input
+    id: name
+    attributes:
+      label: 👤 Name
+      description: Team Name or Team Leader's Name
+      placeholder: "e.g., John Doe"
+    validations:
+      required: true
+
+  - type: input
+    id: project_name
+    attributes:
+      label: 📌 Project Name
+      description: The name of your project
+      placeholder: "e.g., Weather App"
+    validations:
+      required: true
+
+  - type: input
+    id: repository_url
+    attributes:
+      label: 🔗 GitHub Repository URL
+      description: Provide a public link to your GitHub repository
+      placeholder: "https://github.com/username/repository"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 📝 Project Description
+      description: Briefly describe your project (50-100 words).
+      placeholder: "What does your project do? What technologies were used? Why did you create it? What are the key features?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: team_members
+    attributes:
+      label: 👥 Team Members
+      description: If this is a team project, list all members and their roles.
+      placeholder: |
+        1. John Doe - Frontend Developer
+        2. Jane Smith - Backend Developer
+        3. ...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: ✅ Code of Conduct & Submission Agreement
+      description: By submitting this project, you agree to follow our rules.
+      options:
+        - label: I confirm that this project is my original work and follows the Hackathon guidelines.
+          required: true
+        - label: I understand my submission will be evaluated based on code quality, functionality, and innovation.
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## 🚀 What's Next?
+        - Your submission will be reviewed by a maintainer.
+        - If approved, your project will be added to the repository.
+        - Feedback and next steps will be provided via comments on this issue.  
+          
+        Good luck! 🎉

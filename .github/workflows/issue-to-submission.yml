@@ -1,0 +1,189 @@
+name: Convert Issue to Submission PR
+on:
+  issues:
+    types: [opened, edited]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  actions: write
+  repository-projects: write
+
+jobs:
+  create-or-update-pr:
+    if: contains(github.event.issue.labels.*.name, 'project-submission')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up branch name
+        id: branch
+        run: |
+          BRANCH_NAME="submission/issue-${{ github.event.issue.number }}"
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Check if branch exists and create it
+        run: |
+          git fetch origin
+          if git show-ref --quiet refs/remotes/origin/${{ env.branch_name }}; then
+            echo "Branch exists remotely, checking it out..."
+            git checkout ${{ env.branch_name }}
+          else
+            echo "Branch does not exist, creating it..."
+            git checkout -b ${{ env.branch_name }}
+          fi
+
+      - name: Check for existing PR
+        id: check_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER=$(gh pr list --head "${{ env.branch_name }}" --state open --json number --jq '.[0].number' || echo "none")
+          if [[ "$PR_NUMBER" == "none" ]]; then
+            echo "No existing PR found."
+            echo "PR_NUMBER=" >> $GITHUB_ENV
+          else
+            echo "Found PR: $PR_NUMBER"
+            echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+          fi
+
+      - name: Extract project information
+        id: extract
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body = issue.body;
+
+            if (!body) {
+              core.setFailed('Issue body is empty');
+              return;
+            }
+
+            const nameMatch = body.match(/### Full Name\s*\n\s*([^\n]+)/);
+            const projectMatch = body.match(/### Project Name\s*\n\s*([^\n]+)/);
+            const repoMatch = body.match(/### GitHub Repository URL\s*\n\s*([^\n]+)/);
+            const descMatch = body.match(/### Project Description\s*\n\s*([\s\S]*?)(?=###|$)/);
+
+            if (!nameMatch || !projectMatch || !repoMatch || !descMatch) {
+              core.setFailed('Could not extract all required information from issue');
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: "❌ **Error extracting information**\nCould not find all required fields in your submission. Please ensure you've filled out the template correctly."
+              });
+              return;
+            }
+
+            const submission = {
+              name: nameMatch[1].trim(),
+              project_name: projectMatch[1].trim(),
+              repository_url: repoMatch[1].trim(),
+              description: descMatch[1].trim()
+            };
+
+            core.setOutput('submission', JSON.stringify(submission));
+            console.log('Extracted submission:', submission);
+
+      - name: Update submissions.json
+        if: steps.extract.outputs.submission != ''
+        run: |
+          SUBMISSION='${{ steps.extract.outputs.submission }}'
+
+          if [ -f "submissions.json" ]; then
+            # Check if this repo URL already exists
+            REPO_URL=$(echo $SUBMISSION | jq -r '.repository_url')
+            DUPLICATE=$(jq --arg url "$REPO_URL" '.[] | select(.repository_url==$url) | .repository_url' submissions.json)
+            
+            if [ ! -z "$DUPLICATE" ]; then
+              echo "Updating existing submission..."
+              jq --argjson new_submission "$SUBMISSION" 'map(if .repository_url == ($new_submission.repository_url) then $new_submission else . end)' submissions.json > submissions_new.json
+            else
+              echo "Adding new submission..."
+              jq --argjson new_submission "$SUBMISSION" '. += [$new_submission]' submissions.json > submissions_new.json
+            fi
+          else
+            echo "Creating new submissions.json file..."
+            echo "[$SUBMISSION]" > submissions_new.json
+          fi
+
+          mv submissions_new.json submissions.json
+
+      - name: Commit and push changes
+        if: steps.extract.outputs.submission != ''
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add submissions.json
+          git commit -m "Update project submission from issue #${{ github.event.issue.number }}" || echo "No changes to commit"
+          git push --set-upstream origin ${{ env.branch_name }} || echo "Branch push failed"
+
+      - name: Prepare PR description
+        if: steps.extract.outputs.submission != ''
+        run: |
+          submission_json='${{ steps.extract.outputs.submission }}'
+          name=$(echo $submission_json | jq -r '.name')
+          project_name=$(echo $submission_json | jq -r '.project_name')
+          repo_url=$(echo $submission_json | jq -r '.repository_url')
+          description=$(echo $submission_json | jq -r '.description')
+
+          echo "PR_TITLE=Add project: $project_name" >> $GITHUB_ENV
+
+          cat << EOF > pr_body.txt
+          This PR was automatically prepared from issue #${{ github.event.issue.number }}
+
+          Submitted by: @${{ github.event.issue.user.login }}
+
+          ## Project Details
+          - Name: $name
+          - Project: $project_name
+          - Repository: $repo_url
+          - Description: $description
+
+          Closes #${{ github.event.issue.number }}
+          EOF
+
+      - name: Update Existing PR (if found)
+        if: env.PR_NUMBER != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Updating PR #${{ env.PR_NUMBER }}..."
+          gh pr edit ${{ env.PR_NUMBER }} --body-file pr_body.txt
+          echo "✅ PR #${{ env.PR_NUMBER }} updated successfully."
+
+      - name: Create PR if None Exists
+        if: env.PR_NUMBER == ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "No existing PR found, creating a new one..."
+          PR_URL=$(gh pr create \
+            --repo "${{ github.repository }}" \
+            --base main \
+            --head "${{ env.branch_name }}" \
+            --title "${{ env.PR_TITLE }}" \
+            --body-file pr_body.txt \
+            --label "project-submission")
+
+          echo "PR_URL=$PR_URL" >> $GITHUB_ENV
+
+          # Fetch PR number using the branch name (not PR URL)
+          PR_NUMBER=$(gh pr view "${{ env.branch_name }}" --json number --jq '.number')
+          echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+
+      - name: Trigger PR Validation Workflow
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run submission-validation.yml \
+          --ref main \
+          -f pr_number="${{ env.PR_NUMBER }}" \
+          -f issue_number="${{ github.event.issue.number }}"

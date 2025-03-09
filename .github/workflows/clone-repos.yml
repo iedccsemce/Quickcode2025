@@ -1,0 +1,104 @@
+name: Clone Repositories from Submissions
+
+on:
+  pull_request:
+    types: [closed]
+  repository_dispatch:
+    types: [clone-repos]
+  workflow_dispatch:
+    
+  
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  clone-repos:
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Debug GitHub context
+        run: |
+          echo "Event name: ${{ github.event_name }}"
+          echo "PR merged: ${{ github.event.pull_request.merged }}"
+          echo "Repository: ${{ github.repository }}"
+
+      - name: Clone repositories from submissions.json
+        run: |
+          python -c '
+          import json
+          import os
+          import subprocess
+
+          # Check if submissions.json exists
+          if not os.path.exists("submissions.json"):
+              print("submissions.json not found!")
+              exit(1)
+
+          with open("submissions.json", "r") as f:
+              submissions = json.load(f)
+
+          os.makedirs("Submissions", exist_ok=True)
+
+          new_repos_cloned = False
+
+          for submission in submissions:
+              name = submission.get("name", "unknown")
+              project_name = submission.get("project_name", "unknown")
+              repo_url = submission.get("repository_url", "")
+
+              if not repo_url:
+                  print(f"No repository URL found for {name}, skipping...")
+                  continue
+
+              clone_path = os.path.join("Submissions", project_name)
+
+              if os.path.exists(clone_path):
+                  print(f"Repository {project_name} already exists, skipping...")
+                  continue
+
+              print(f"Cloning {repo_url} into {clone_path}...")
+              try:
+                  subprocess.run(["git", "clone", repo_url, clone_path], check=True)
+                  new_repos_cloned = True  # Mark that we cloned at least one repo
+
+                  # Remove .git directory to avoid nested Git issues
+                  git_dir = os.path.join(clone_path, ".git")
+                  if os.path.exists(git_dir):
+                      subprocess.run(["rm", "-rf", git_dir], check=True)
+
+                  print(f"Successfully cloned {repo_url}")
+              except subprocess.CalledProcessError as e:
+                  print(f"Failed to clone {repo_url}: {e}")
+
+          if new_repos_cloned:
+              with open(os.environ["GITHUB_ENV"], "a") as env_file:
+                  env_file.write("NEW_CLONES=true\n")
+          '
+
+      - name: Commit and Push Cloned Repositories
+        if: env.NEW_CLONES == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add Submissions/
+          git commit -m "Add new cloned repositories" || exit 0
+          git push origin main
