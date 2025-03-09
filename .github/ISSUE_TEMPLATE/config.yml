@@ -1,5 +1,5 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
-  - name: README
-    url: https://github.com/NotNalin/Hackathon-Submission/
+  - name: Quickcode Website
+    url: https://quickcode2025.vercel.app/
     about: Learn more here
