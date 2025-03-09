@@ -1,4 +1,5 @@
-# 🚀 Hackathon Submission Template using GitHub Actions
+# 🚀 QuickCode Project Submission Repository
+<img src="https://raw.githubusercontent.com/iedccsemce/Quickcode2025/refs/heads/main/TITLE.png" alt="Logo" width="250"/>
 
 This repository provides an **automated workflow** to manage **hackathon project submissions** using **GitHub Issues & Pull Requests**.
 
