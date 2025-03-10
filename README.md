@@ -1,4 +1,6 @@
-# 🚀 Hackathon Submission Template using GitHub Actions
+# 🚀 Quickcode Submission Repository
+
+<img src="TITLE.png" alt="Quickcode Logo" width="250px">
 
 This repository provides an **automated workflow** to manage **hackathon project submissions** using **GitHub Issues & Pull Requests**.
 
