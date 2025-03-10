@@ -1,0 +1,165 @@
+name: Submission Validation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  repository_dispatch:
+    types: [pr-validation]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "PR Number"
+        required: false
+      issue_number:
+        description: "Issue Number"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  check-deadline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get PR Number
+        run: |
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          CLIENT_PR_NUMBER="${{ github.event.client_payload.pr_number }}"
+          INPUT_PR_NUMBER="${{ github.event.inputs.pr_number }}"
+
+          if [[ -n "$PR_NUMBER" ]]; then
+            echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+          elif [[ -n "$CLIENT_PR_NUMBER" ]]; then
+            echo "PR_NUMBER=$CLIENT_PR_NUMBER" >> $GITHUB_ENV
+          elif [[ -n "$INPUT_PR_NUMBER" ]]; then
+            echo "PR_NUMBER=$INPUT_PR_NUMBER" >> $GITHUB_ENV
+          else
+            echo "❌ PR Number not found!"
+            exit 1
+          fi
+
+      - name: Check if PR is Late
+        id: deadline-check
+        run: |
+          DEADLINE="2025-02-02T13:30:00Z"
+          CURRENT_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          if [[ "$CURRENT_TIME" > "$DEADLINE" ]]; then
+            echo "IS_LATE=true" >> $GITHUB_ENV
+          else
+            echo "IS_LATE=false" >> $GITHUB_ENV
+          fi
+
+      - name: Validate submissions.json
+        id: validate-submissions
+        run: |
+          if [ ! -f "submissions.json" ]; then
+            echo "VALIDATION_SKIPPED=true" >> $GITHUB_ENV
+            exit 0
+          fi
+
+          python -c '
+          import json
+          import sys
+          try:
+              with open("submissions.json", "r") as f:
+                  submissions = json.load(f)
+              required_keys = ["name", "project_name", "repository_url", "description"]
+              for submission in submissions:
+                  if not all(k in submission for k in required_keys):
+                      print("❌ Invalid submission format")
+                      sys.exit(1)
+              print("✅ Valid submissions.json")
+          except Exception as e:
+              print(f"❌ Error reading file: {e}")
+              sys.exit(1)
+          '
+        continue-on-error: true
+
+      - name: Mark PR as Late
+        if: env.IS_LATE == 'true'
+        run: |
+          PR_NUMBER=${{ env.PR_NUMBER }}
+          REPO="${GITHUB_REPOSITORY}"
+          TITLE=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${REPO}/pulls/$PR_NUMBER" | jq -r '.title')
+
+          if [[ ! "$TITLE" =~ ^\[LATE\] ]]; then
+            curl -s -X PATCH \
+              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/repos/${REPO}/pulls/$PR_NUMBER" \
+              -d "{\"title\":\"[LATE] $TITLE\"}"
+          fi
+
+      - name: Add Labels and Comment on PR & Issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER=${{ env.PR_NUMBER }}
+          ISSUE_NUMBER=${{ github.event.client_payload.issue_number || github.event.inputs.issue_number }}
+          COMMENT=""
+          LABELS=""
+
+          # Determine validation status
+          if [[ "$IS_LATE" == "true" && "${{ steps.validate-submissions.outcome }}" != "success" ]]; then
+            COMMENT="⚠️ **LATE & INVALID submission**. Please fix issues."
+            LABELS="late-submission,insufficient-information"
+            VALIDATION_STATUS="LATE & INVALID"
+          elif [[ "$IS_LATE" == "true" ]]; then
+            COMMENT="⚠️ **LATE submission**. This PR was submitted after the deadline."
+            LABELS="late-submission"
+            VALIDATION_STATUS="LATE"
+          elif [[ "${{ steps.validate-submissions.outcome }}" != "success" ]]; then
+            COMMENT="⚠️ **INVALID submissions.json**. Please fix formatting issues."
+            LABELS="insufficient-information"
+            VALIDATION_STATUS="INVALID"
+          else
+            COMMENT="✅ **All checks passed!** Submission is valid and on time."
+            VALIDATION_STATUS="VALID"
+          fi
+
+          # Add comment to PR
+          gh pr comment $PR_NUMBER --body "$COMMENT"
+
+          # Add labels to PR
+          if [[ -n "$LABELS" ]]; then
+            gh issue edit $PR_NUMBER --add-label "$LABELS"
+          fi
+
+          # Check if PR is linked to an issue and comment
+          if [[ -n "$ISSUE_NUMBER" ]]; then
+            echo "Found associated issue #$ISSUE_NUMBER"
+
+            # Prepare issue comment
+            case "$VALIDATION_STATUS" in
+              "VALID")
+                ISSUE_COMMENT="✅ **Validation passed**: Your project submission (PR #$PR_NUMBER) is valid and on time!"
+                ;;
+              "LATE")
+                ISSUE_COMMENT="⚠️ **Late submission**: Your project submission (PR #$PR_NUMBER) was received after the deadline."
+                ;;
+              "INVALID")
+                ISSUE_COMMENT="⚠️ **Invalid submission**: Your project submission (PR #$PR_NUMBER) has formatting issues in submissions.json. Please fix them."
+                ;;
+              "LATE & INVALID")
+                ISSUE_COMMENT="⚠️ **Late & Invalid submission**: Your project submission (PR #$PR_NUMBER) was received after the deadline and has formatting issues. Please fix them."
+                ;;
+              *)
+                ISSUE_COMMENT="ℹ️ **Submission status**: Your project submission (PR #$PR_NUMBER) has been processed."
+                ;;
+            esac
+
+            # Add comment to issue
+            gh issue comment $ISSUE_NUMBER --body "$ISSUE_COMMENT"
+            echo "Commented on issue #$ISSUE_NUMBER about validation status"
+          else
+            echo "No associated issue found for PR #$PR_NUMBER"
+          fi

@@ -1,0 +1,177 @@
+name: "Merge Associated PR on Issue Completion"
+
+on:
+  issues:
+    types: [closed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  merge-associated-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Determine Associated PR Number
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ISSUE_NUMBER="${{ github.event.issue.number }}"
+          BRANCH_NAME="submission/issue-${ISSUE_NUMBER}"
+          PR_NUMBER=$(gh pr list --head "$BRANCH_NAME" --state open --json number --jq '.[0].number' || echo "")
+
+          if [[ -n "$PR_NUMBER" ]]; then
+            echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+          else
+            echo "No associated PR found for issue #$ISSUE_NUMBER"
+          fi
+
+      - name: Check if issue was closed as completed
+        if: env.PR_NUMBER != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ISSUE_NUMBER="${{ github.event.issue.number }}"
+          STATE_REASON=$(gh issue view "$ISSUE_NUMBER" --json stateReason --jq '.stateReason')
+          echo "Issue #$ISSUE_NUMBER was closed with reason: $STATE_REASON"
+
+          if [[ "$STATE_REASON" == "COMPLETED" ]]; then
+            echo "ISSUE_COMPLETED=true" >> $GITHUB_ENV
+          else
+            echo "ISSUE_COMPLETED=false" >> $GITHUB_ENV
+          fi
+
+      - name: Merge PR if issue was completed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: env.PR_NUMBER != '' && env.ISSUE_COMPLETED == 'true'
+        run: |
+          echo "Attempting to merge PR #$PR_NUMBER..."
+
+          # Check if the PR is mergeable
+          MERGEABLE=$(gh pr view "$PR_NUMBER" --json mergeable --jq '.mergeable')
+
+          if [[ "$MERGEABLE" == "MERGEABLE" ]]; then
+            echo "✅ PR #$PR_NUMBER is mergeable. Proceeding with squash merge..."
+            if gh pr merge "$PR_NUMBER" --squash --delete-branch; then
+              echo "✅ PR #$PR_NUMBER merged successfully."
+            else
+              echo "❌ Failed to merge PR #$PR_NUMBER."
+              exit 1
+            fi
+          else
+            echo "⚠️ PR #$PR_NUMBER has merge conflicts. Attempting auto-resolve..."
+
+            # Set up Git user
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+
+            # Fetch latest main branch
+            git fetch origin main
+
+            # Get the PR branch name
+            PR_DETAILS=$(gh pr view "$PR_NUMBER" --json headRefName,title --jq '{branch: .headRefName, title: .title}')
+            PR_BRANCH=$(echo "$PR_DETAILS" | jq -r '.branch')
+            PR_TITLE=$(echo "$PR_DETAILS" | jq -r '.title')
+
+            # Fetch and checkout PR branch
+            git fetch origin "$PR_BRANCH"
+            git checkout "$PR_BRANCH"
+
+            # Attempt to rebase onto main
+            if ! git rebase origin/main; then
+              echo "❌ Rebase failed due to conflicts. Resolving manually..."
+
+              # Extract `submissions.json` from both branches
+              git show origin/main:submissions.json > main_submissions.json || touch main_submissions.json
+              git show "$PR_BRANCH":submissions.json > pr_submissions.json || touch pr_submissions.json
+
+              # Merge JSON contents (ensuring unique submissions by repository_url)
+              jq -s 'add | group_by(.repository_url) | map(if .[0].repository_url == "" then .[0] else .[] end)' main_submissions.json pr_submissions.json > submissions.json
+
+              # Stage the resolved file
+              git add submissions.json
+              if git rebase --continue; then
+                  echo "✅ Merge conflicts resolved, rebase successful."
+              elif git status --porcelain | grep submissions.json; then
+                  git add submissions.json
+                  git commit -m "$PR_TITLE"
+                  git rebase --continue
+              else
+                  echo "⚠️ Rebase still failing. Aborting..."
+                  git rebase --abort
+                  exit 1
+              fi
+            fi
+
+            # Push the fixed branch
+            if git push --force-with-lease origin "$PR_BRANCH"; then
+              echo "✅ PR #$PR_NUMBER updated with conflict resolution."
+
+              # Retry merging after fixing conflicts
+              if gh pr merge "$PR_NUMBER" --squash --delete-branch --auto; then
+                echo "✅ PR #$PR_NUMBER merged successfully after conflict resolution."
+              else
+                echo "❌ Failed to merge PR #$PR_NUMBER after resolving conflicts."
+                exit 1
+              fi
+
+              # Confirm PR was merged
+              MERGED_STATUS=$(gh pr view "$PR_NUMBER" --json mergedAt --jq '.mergedAt')
+              if [[ -n "$MERGED_STATUS" ]]; then
+                echo "✅ PR #$PR_NUMBER was successfully merged at $MERGED_STATUS."
+              else
+                echo "❌ PR #$PR_NUMBER was NOT merged despite no conflicts."
+                exit 1
+              fi
+            else
+              echo "❌ Failed to push resolved PR branch. Manual intervention required."
+              exit 1
+            fi  # ✅ Closing `if` block properly before calling `gh api`
+          fi
+          # Now trigger the workflow
+          if gh api repos/${{ github.repository }}/dispatches \
+              --method POST \
+              --header "Authorization: Bearer $GH_TOKEN" \
+              --header "Accept: application/vnd.github.everest-preview+json" \
+              --field event_type="clone-repos"; then
+            echo "✅ Successfully triggered clone-repos workflow."
+          else
+            echo "❌ Failed to trigger clone-repos workflow."
+            exit 1
+          fi
+
+      - name: Close PR if issue was not completed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: env.PR_NUMBER != '' && env.ISSUE_COMPLETED == 'false'
+        run: |
+          echo "Issue was not completed. Closing PR #$PR_NUMBER without merging..."
+          gh pr close "$PR_NUMBER" --delete-branch || echo "PR closing failed!"
+          echo "PR #$PR_NUMBER has been closed."
+
+      - name: Comment on Issue about PR action
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: env.PR_NUMBER != ''
+        run: |
+          ISSUE_NUMBER="${{ github.event.issue.number }}"
+
+          if [[ "$ISSUE_COMPLETED" == "true" ]]; then
+            if [[ -n "$(gh pr view "$PR_NUMBER" --json mergedAt --jq '.mergedAt')" ]]; then
+              COMMENT_BODY="✅ The associated PR #$PR_NUMBER has been merged because the issue was marked as completed."
+            else
+              COMMENT_BODY="⚠️ The associated PR #$PR_NUMBER could not be merged even though the issue was marked as completed."
+            fi
+          else
+            COMMENT_BODY="🔒 The associated PR #$PR_NUMBER has been closed without merging because the issue was not completed."
+          fi
+          gh issue comment "$ISSUE_NUMBER" --body "$COMMENT_BODY"
