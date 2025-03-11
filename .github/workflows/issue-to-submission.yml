@@ -95,7 +95,7 @@ jobs:
       - name: Update submissions.json
         if: steps.extract.outputs.submission != ''
         run: |
-          SUBMISSION=$(echo '${{ steps.extract.outputs.submission }}' | jq -Rs .)
+          SUBMISSION=${{ steps.extract.outputs.submission }}
 
           if [ -f "submissions.json" ]; then
             # Check if this repo URL already exists
