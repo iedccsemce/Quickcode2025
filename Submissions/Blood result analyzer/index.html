@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HemoSync - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #1a1a2e;
+      overflow: hidden;
+      position: relative;
+    }
+    .banner {
+      width: 100%;
+      background: linear-gradient(to right, #ff0000, #990000);
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      animation: slideDown 1.5s ease-in-out;
+    }
+    .title {
+      font-size: 64px;
+      font-weight: bold;
+      color: #ff4444;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease-in-out, glowText 2s infinite alternate, bloodFlow 3s infinite ease-in-out;
+      text-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+    }
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px rgba(255,0,0,0.7); }
+      to { text-shadow: 0 0 25px rgba(255,0,0,1); }
+    }
+    @keyframes bloodFlow {
+      0% { transform: scale(1); color: #ff4444; }
+      50% { transform: scale(1.05); color: #cc0000; }
+      100% { transform: scale(1); color: #ff4444; }
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      background-color: #2e2e4f;
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+      animation: slideUp 1.5s ease-in-out;
+    }
+    .button {
+      padding: 20px 40px;
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+      background-color: #ff4444;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .button:hover {
+      background-color: #cc0000;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.9);
+      transform: scale(1.08);
+    }
+    .interactive-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .shape {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: rgba(255, 0, 0, 0.5);
+      border-radius: 50%;
+      transition: transform 0.3s ease-out;
+    }
+    .blood-animation {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .blood-drop {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(255, 0, 0, 0.8);
+      border-radius: 50%;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      from { transform: translateY(-10vh) scale(1); opacity: 1; }
+      to { transform: translateY(110vh) scale(0.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">Know what is in your blood</div>
+  <div class="title">Welcome to <span style="color:#ffffff;">HemoSync</span></div>
+  <div class="container">
+    <a href="blood_report_summary.html" class="button">Blood Report Analyzer</a>
+  </div>
+  <div class="blood-animation"></div>
+  <div class="interactive-shapes"></div>
+  <script>
+    function createBloodDrops() {
+      const container = document.querySelector(".blood-animation");
+      for (let i = 0; i < 10; i++) {
+        const drop = document.createElement("div");
+        drop.classList.add("blood-drop");
+        drop.style.left = Math.random() * 100 + "vw";
+        drop.style.animationDuration = Math.random() * 3 + 2 + "s";
+        drop.style.width = drop.style.height = Math.random() * 15 + 10 + "px";
+        container.appendChild(drop);
+        setTimeout(() => drop.remove(), 5000);
+      }
+    }
+    setInterval(createBloodDrops, 2000);
+
+    document.addEventListener("mousemove", (e) => {
+      const shape = document.createElement("div");
+      shape.classList.add("shape");
+      shape.style.left = `${e.clientX}px`;
+      shape.style.top = `${e.clientY}px`;
+      document.querySelector(".interactive-shapes").appendChild(shape);
+      setTimeout(() => shape.remove(), 500);
+    });
+  </script>
+</body>
+</html>
