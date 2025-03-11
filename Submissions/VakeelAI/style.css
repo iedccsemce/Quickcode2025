@@ -1,0 +1,481 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&family=Cormorant+Garamond:wght@400;600&family=Libre+Baskerville:wght@400;700&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('law_book_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #f4f4f4;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Container for the content */
+.container {
+    width: 85%;
+    margin: 0 auto;
+    padding: 20px;
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+    border-bottom: 3px solid #d4af37;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), transparent);
+    pointer-events: none;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from { text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.3); }
+    to { text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.6); }
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #d4af37;
+    font-weight: 600;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 4px;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #d4af37;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Section Styles */
+section {
+    margin: 80px 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-5px);
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6em;
+    font-weight: 700;
+    color: #e3c3a0;
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #d4af37, transparent);
+}
+
+ul li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4em;
+    margin: 20px 0;
+    padding-left: 30px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+ul li:hover {
+    transform: translateX(10px);
+    color: #d4af37;
+}
+
+ul li:before {
+    content: "•";
+    color: #d4af37;
+    position: absolute;
+    left: 0;
+    font-size: 1.8em;
+    transition: all 0.3s ease;
+}
+
+ul li:hover:before {
+    transform: scale(1.2);
+}
+
+/* Button Styling */
+.btn, .contract-btn, .loophole-btn {
+    background: linear-gradient(45deg, #d4af37, #b89726);
+    color: white;
+    padding: 18px 35px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before, .contract-btn::before, .loophole-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn:hover::before, .contract-btn:hover::before, .loophole-btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover, .contract-btn:hover, .loophole-btn:hover {
+    background: linear-gradient(45deg, #b89726, #d4af37);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
+}
+
+/* Chatbot Styles */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
+    height: 450px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.9));
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.chatbot-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.chatbot-header i {
+    font-size: 1.2em;
+    color: #d4af37;
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #d4af37;
+    font-family: 'Playfair Display', serif;
+}
+
+#chatbox {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-right: 10px;
+}
+
+#chatbox::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chatbox::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+#chatbox::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 3px;
+}
+
+.chatbot-input-container {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+#user-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 25px;
+    font-size: 0.9em;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    color: #fff;
+}
+
+#user-input:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
+}
+
+#user-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#send-btn {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #d4af37, #b89726);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#send-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #b89726, #d4af37);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.message {
+    margin: 10px 0;
+    padding: 12px 15px;
+    border-radius: 15px;
+    max-width: 85%;
+    font-size: 0.9em;
+    line-height: 1.4;
+    animation: messageAppear 0.3s ease-out;
+}
+
+.user-message {
+    background: linear-gradient(135deg, #d4af37, #b89726);
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    margin-right: auto;
+    border-bottom-left-radius: 5px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Remove the chatbot button styles since we don't need them anymore */
+.chatbot-button {
+    display: none;
+}
+
+/* Responsive styles for chatbot */
+@media (max-width: 768px) {
+    .chatbot-container {
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+        padding: 20px;
+    }
+}
+
+/* Contract and Loophole Styles */
+.contract-generator-container, .loophole-detector-container {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+    padding: 45px;
+    border-radius: 25px;
+    margin-top: 35px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.contract-generator-container:hover, .loophole-detector-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.contract-input, .loophole-input {
+    width: 100%;
+    padding: 25px;
+    margin: 25px 0;
+    font-size: 1.1em;
+    border: 2px solid #8e735b;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.contract-input:focus, .loophole-input:focus {
+    border-color: #d4af37;
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+/* Footer Styling */
+footer {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
+    color: #fff;
+    text-align: center;
+    padding: 40px;
+    margin-top: 60px;
+    border-top: 3px solid #d4af37;
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #d4af37, transparent);
+}
+
+footer a {
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #d4af37;
+    transition: width 0.3s ease;
+}
+
+footer a:hover::after {
+    width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    
+    header h1 {
+        font-size: 2.5em;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    nav ul li {
+        margin: 0;
+    }
+    
+    section {
+        padding: 30px;
+        margin: 40px 0;
+    }
+    
+    h2 {
+        font-size: 2.2em;
+    }
+}

@@ -1,0 +1,5 @@
+## Install all the required libraries
+pip install google-api-python-client google-auth google-auth-httplib2 google-auth-oauthlib
+pip install nltk
+pip install streamlit
+pip install google.generativeai

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Law Advisory</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="chatbot.html">AI Chatbot</a></li>
+                <li><a href="search-laws.html">Search Laws</a></li>
+                <li><a href="document-generator.html" class="active">Document Generator</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="doc-container">
+        <h2>Generate Legal Documents</h2>
+        <div class="input-output-container">
+            <div class="input-section">
+                <label for="documentInput">Enter Your Content:</label>
+                <textarea id="documentInput" placeholder="Type your document here..."></textarea>
+            </div>
+            <div class="output-section">
+                <label for="documentOutput">Generated Document:</label>
+                <textarea id="documentOutput" placeholder="Generated document will appear here..." readonly></textarea>
+            </div>
+        </div>
+        <button onclick="generateDocument()">Generate</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Law Advisory. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function generateDocument() {
+            let inputText = document.getElementById("documentInput").value;
+            let outputBox = document.getElementById("documentOutput");
+
+            if (inputText.trim() === "") {
+                outputBox.value = "Please enter some content before generating the document.";
+            } else {
+                outputBox.value = "Generated Legal Document:\n" + inputText + "\n\n[Sample legal formatting applied...]";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+

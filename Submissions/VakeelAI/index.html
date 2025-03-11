@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VakilAI - Your AI-powered legal assistant providing legal services and information.">
+    <meta name="keywords" content="legal, law, attorney, lawyer, legal services, AI, VakilAI">
+    <meta name="author" content="VakilAI">
+    <title>VakeelAI - AI-Powered Legal Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>VakeelAI</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#privacy-policy">Privacy Policy</a></li>
+                    <li><a href="#terms-of-service">Terms of Service</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="container">
+            <h2>Welcome to VakilAI</h2>
+            <p>Providing professional legal services tailored to your needs.
+                Welcome to VakilAI – Your AI-Powered Legal Advisor
+
+VakilAI is an AI-driven legal assistant providing instant guidance on various legal matters, including contracts, property disputes, criminal laws, consumer rights, cyber laws, and more. It helps you understand relevant legal provisions, including IPC sections and Indian laws.
+
+While VakilAI offers general legal insights, always consult a professional lawyer for specific legal cases.
+
+Start exploring legal solutions now.
+            </p>
+            <a href="#contact" class="btn">Contact Us Today</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>We are a team of experienced attorneys dedicated to offering the best legal solutions. Your trusted partner for comprehensive legal support. With a team of highly skilled and experienced legal advisors, we are dedicated to providing personalized, reliable, and effective solutions tailored to your unique needs. Whether you're navigating complex corporate law, family disputes, immigration matters, or any other legal challenge, our expertise ensures you receive the best guidance every step of the way. We pride ourselves on our commitment to integrity, transparency, and client satisfaction, offering clear communication and strategic advice to achieve favorable outcomes. At VakilAI, we don't just handle cases—we build lasting relationships based on trust and results. Let us be your advocate and guide in securing your legal rights and peace of mind.</p>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Legal Consultation</li>
+                <li>Contract Review</li>
+                <li>Litigation</li>
+                <li>Estate Planning</li>
+                <li>Corporate Law</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form action="submit_form.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Chatbot Button -->
+    <div class="chatbot-button" id="chatbot-toggle">
+        <i class="fas fa-comment"></i>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-close" id="chatbot-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="chatbot-header">
+            <i class="fas fa-balance-scale"></i>
+            <h3>Legal Assistant</h3>
+        </div>
+        <div id="chatbox">
+            <div id="messages"></div>
+        </div>
+        <div class="chatbot-input-container">
+            <input type="text" id="user-input" placeholder="Type your legal question...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <!-- Rest of your HTML content... -->
+
+    <!-- JavaScript Files -->
+    <script src="chatbot.js"></script>
+    <script src="main.js"></script>
+
+    <script>
+        // Function to process user message and get bot response
+        function getBotResponse(userInput) {
+            // Convert input to lowercase for better matching
+            const input = userInput.toLowerCase().trim();
+            
+            // Define keywords and their responses
+            const responses = {
+                'murder': "Murder cases are extremely serious criminal matters. You should immediately contact a criminal defense attorney who specializes in homicide cases. Do not discuss your case with anyone except your attorney.",
+                'divorce': "For divorce-related matters, it's crucial to understand the laws of your state and consult with a family law attorney.",
+                'contract': "When reviewing contracts, make sure to understand the terms and conditions. It's best to consult with a legal expert to ensure everything is clear and fair.",
+                'property': "Property laws can vary widely depending on location. Be sure to check local regulations, and consider working with a real estate attorney for advice.",
+                'will': "If you're thinking about drafting a will, it's important to ensure that it complies with your state's laws and that your wishes are clearly outlined.",
+                'employment': "Employment law covers a wide range of issues, from contracts to workplace disputes. It's advisable to consult with an employment lawyer for specific concerns.",
+                'immigration': "Immigration law can be complex and varies by country. It's important to seek advice from an immigration attorney to navigate the process.",
+                'bankruptcy': "Bankruptcy laws provide options for debt relief. Consulting with a bankruptcy attorney can help you understand the best course of action.",
+                'criminal': "Criminal law involves defending against charges and understanding your rights. It's crucial to work with a criminal defense attorney for such matters.",
+                'assault': "Assault charges are serious criminal matters. You should seek immediate legal representation from a criminal defense attorney who can protect your rights.",
+                'theft': "Theft charges can have serious consequences. Contact a criminal defense attorney immediately to understand your rights and possible defenses.",
+                'drug': "Drug-related charges require immediate attention from a criminal defense attorney. The severity and consequences vary by jurisdiction and substance involved.",
+                'dui': "DUI/DWI charges can have serious consequences. Contact a DUI defense attorney immediately to protect your rights and discuss your options.",
+                'tax': "Tax law can be complicated, with many regulations and deadlines. Consulting with a tax attorney or accountant is recommended.",
+                'family': "Family law covers matters like custody, adoption, and spousal support. A family law attorney can provide guidance tailored to your situation.",
+                'custody': "Child custody matters are complex and emotionally challenging. A family law attorney can help protect your rights and your child's best interests.",
+                'accident': "If you've been involved in an accident, document everything and seek medical attention. Then contact a personal injury attorney to discuss your rights.",
+                'injury': "Personal injury cases require proper documentation and timely action. Consult with a personal injury attorney to understand your rights to compensation.",
+                'malpractice': "Medical malpractice cases are complex and require specialized legal expertise. Contact a medical malpractice attorney to evaluate your case.",
+                'estate': "Estate planning involves important decisions about your assets and wishes. An estate planning attorney can help you create a comprehensive plan.",
+                'landlord': "Landlord-tenant disputes require understanding of specific rental laws. A real estate attorney can help protect your rights.",
+                'tenant': "Tenant rights vary by location but include basic protections. Consult with a housing attorney if your rights have been violated.",
+                'copyright': "Copyright law protects creative works. An intellectual property attorney can help you register and protect your copyrights.",
+                'trademark': "Trademark protection is crucial for business brands. An intellectual property attorney can help with registration and enforcement.",
+                'patent': "Patent law is complex and requires specialized knowledge. Consult with a patent attorney to protect your invention.",
+                'business': "Business law encompasses many areas including formation, contracts, and compliance. A business attorney can provide comprehensive guidance.",
+                'discrimination': "Workplace discrimination is illegal. An employment law attorney can help you understand your rights and potential claims.",
+                'harassment': "Harassment in any form is serious. Contact an attorney specializing in harassment cases to discuss your situation.",
+                'divorce': "Divorce proceedings can be complex. A family law attorney can help protect your interests and guide you through the process.",
+                 'hi' :"hii i am your advisor" ,
+                 'helllo':"Hello,sir",
+                 'good morning':"Good morning,Sir",
+                 'good evening':"Good evening,Sir",
+                 'good night':"Good morning,Sir"
+                 
+                 };
+
+            // Check for keywords in the input
+            for (let keyword in responses) {
+                if (input.includes(keyword)) {
+                    return responses[keyword];
+                }
+            }
+
+            // Check for help or advice
+            if (input.includes('help') || input.includes('advice')) {
+                return "I can help provide general legal advice. For more specific legal guidance, please consult with an attorney who specializes in your area of concern.";
+            }
+
+            // Default response if no keywords match
+            return "I'm here to provide general legal information. Could you please be more specific about your legal question? For complex or urgent matters, please reach out to a licensed attorney.";
+        }
+
+        // Event listener for send button
+        document.getElementById('send-btn').addEventListener('click', function() {
+            const userInput = document.getElementById('user-input').value;
+            if (!userInput.trim()) return; // Don't process empty messages
+
+            const chatbox = document.getElementById('messages');
+
+            // Display user's message
+            const userMessage = document.createElement('div');
+            userMessage.classList.add('message', 'user-message');
+            userMessage.textContent = userInput;
+            chatbox.appendChild(userMessage);
+
+            // Get and display bot's response
+            const botMessage = document.createElement('div');
+            botMessage.classList.add('message', 'bot-message');
+            botMessage.textContent = getBotResponse(userInput);
+            chatbox.appendChild(botMessage);
+
+            // Clear input and scroll to bottom
+            document.getElementById('user-input').value = "";
+            chatbox.scrollTop = chatbox.scrollHeight;
+        });
+
+        // Allow pressing Enter to send message
+        document.getElementById('user-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                document.getElementById('send-btn').click();
+            }
+        });
+
+        // Chatbot Toggle Functionality
+        document.getElementById('chatbot-toggle').addEventListener('click', function() {
+            document.querySelector('.chatbot-container').classList.add('active');
+        });
+
+        document.getElementById('chatbot-close').addEventListener('click', function() {
+            document.querySelector('.chatbot-container').classList.remove('active');
+        });
+    </script>
+
+    <!-- Contract Generator -->
+    <div class="contract-generator-container">
+        <h3 class="section-title">Legal Contract Generator</h3>
+        <div class="contract-generator">
+            <input type="text" id="contract-type" class="contract-input" placeholder="Contract Type (e.g., NDA, Lease)">
+            <input type="text" id="parties" class="contract-input" placeholder="Parties (e.g., John Doe and Jane Smith)">
+            <textarea id="terms" class="contract-input" placeholder="Terms (e.g., Confidentiality, Duration)"></textarea>
+            <button id="generate-contract-btn" class="contract-btn">Generate Contract</button>
+            <pre id="contract-output" class="contract-output"></pre>
+        </div>
+    </div>
+
+    <!-- Loophole Detector -->
+    <div class="loophole-detector-container">
+        <h3 class="section-title">Loophole Detector</h3>
+        <div class="loophole-detector">
+            <textarea id="contract-text" class="loophole-input" placeholder="Paste your contract text here"></textarea>
+            <button id="detect-loopholes-btn" class="loophole-btn">Detect Loopholes</button>
+            <pre id="loophole-analysis" class="loophole-output"></pre>
+        </div>
+    </div>
+
+    <section id="privacy-policy">
+        <div class="container">
+            <h2>Privacy Policy</h2>
+            <div class="policy-content">
+                <p>We value your privacy and are committed to protecting your personal information. Our website collects and processes data to enhance user experience, comply with legal requirements, and improve our AI-powered services.</p>
+                <p>We do not sell your data to third parties and implement security measures to protect your information. By using our site, you consent to our data practices as outlined in this policy.</p>
+                <p>Our data collection and processing activities include:</p>
+                <ul>
+                    <li>User interactions with our AI chatbot</li>
+                    <li>Contract analysis and generation</li>
+                    <li>Website usage statistics</li>
+                    <li>Contact form submissions</li>
+                </ul>
+                <p>We implement industry-standard security measures to protect your data, including:</p>
+                <ul>
+                    <li>Encryption of sensitive information</li>
+                    <li>Regular security audits</li>
+                    <li>Secure data storage</li>
+                    <li>Access controls and authentication</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="terms-of-service">
+        <div class="container">
+            <h2>Terms of Service</h2>
+            <div class="terms-content">
+                <p>By accessing our website, you agree to comply with our terms and conditions. Our AI-powered services are provided "as is" without warranties, and we are not liable for any inaccuracies or damages arising from their use.</p>
+                <p>Users must not:</p>
+                <ul>
+                    <li>Misuse our platform or AI services</li>
+                    <li>Engage in unlawful activities</li>
+                    <li>Attempt to exploit the AI system</li>
+                    <li>Share malicious content or malware</li>
+                    <li>Violate intellectual property rights</li>
+                </ul>
+                <p>We reserve the right to:</p>
+                <ul>
+                    <li>Modify these terms at any time</li>
+                    <li>Restrict access to our services</li>
+                    <li>Update our AI models and features</li>
+                    <li>Terminate accounts for violations</li>
+                </ul>
+                <p>Continued use of our services constitutes acceptance of the updated terms.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 VakilAI. All rights reserved.</p>
+            <p><a href="#privacy-policy">Privacy Policy</a> | <a href="#terms-of-service">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="chatbot.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
