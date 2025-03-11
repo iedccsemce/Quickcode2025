@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz Website</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #6a11cb;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background: #2575fc;
+        }
+
+        .levels {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .level {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            color: #fff;
+            text-align: center;
+        }
+
+        .level:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            color: #fff;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .star {
+            font-size: 2rem;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+
+        .star.filled {
+            color: #ffd700;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .popup.show {
+            display: block;
+        }
+
+        .popup p {
+            color: #333;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .popup button {
+            padding: 10px 20px;
+            background: #6a11cb;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .popup button:hover {
+            background: #2575fc;
+        }
+
+        .completion-container {
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .completion-container h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .completion-container p {
+            font-size: 1.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translate(-50%, -60%); opacity: 0; }
+            to { transform: translate(-50%, -50%); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="container login-container">
+        <h1><b>legAI</b></h1>
+        <input type="email" id="email" placeholder="Enter your email">
+        <input type="password" id="password" placeholder="Enter your password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Let's Get Started Page -->
+    <div class="container get-started-container" style="display: none;">
+        <h1>Let's Get Started!</h1>
+        <button onclick="showLevelSelection()">Start Quiz</button>
+    </div>
+
+    <!-- Level Selection Page -->
+    <div class="container level-selection-container" style="display: none;">
+        <h1>Select a Level</h1>
+        <div class="levels">
+            <div class="level" data-level="1">Level 1</div>
+            <div class="level" data-level="2">Level 2</div>
+            <div class="level" data-level="3">Level 3</div>
+            <div class="level" data-level="4">Level 4</div>
+            <div class="level" data-level="5">Level 5</div>
+            <div class="level" data-level="6">Level 6</div>
+            <div class="level" data-level="7">Level 7</div>
+            <div class="level" data-level="8">Level 8</div>
+            <div class="level" data-level="9">Level 9</div>
+            <div class="level" data-level="10">Level 10</div>
+        </div>
+    </div>
+
+    <!-- Quiz Page -->
+    <div class="container quiz-container" style="display: none;">
+        <h1>Laws and Regulations Quiz</h1>
+        <div class="questions">
+            <!-- Questions will be dynamically loaded here -->
+        </div>
+        <div class="stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+        </div>
+    </div>
+
+    <!-- Completion Page -->
+    <div class="container completion-container">
+        <h1>Fantastic! 🎉</h1>
+        <p>You have successfully completed the level.</p>
+        <p>Keep up the great work!</p>
+    </div>
+
+    <!-- Popup for feedback -->
+    <div class="popup" id="feedback-popup">
+        <p id="feedback-message"></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        // Page Elements
+        const loginContainer = document.querySelector('.login-container');
+        const getStartedContainer = document.querySelector('.get-started-container');
+        const levelSelectionContainer = document.querySelector('.level-selection-container');
+        const quizContainer = document.querySelector('.quiz-container');
+        const completionContainer = document.querySelector('.completion-container');
+        const questionsContainer = document.querySelector('.questions');
+        const stars = document.querySelectorAll('.star');
+        const feedbackPopup = document.getElementById('feedback-popup');
+        const feedbackMessage = document.getElementById('feedback-message');
+
+        // Login Function
+        function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Simple validation
+            if (email && password) {
+                loginContainer.style.display = 'none';
+                getStartedContainer.style.display = 'block';
+            } else {
+                alert('Please enter both email and password.');
+            }
+        }
+
+        // Show Level Selection
+        function showLevelSelection() {
+            getStartedContainer.style.display = 'none';
+            levelSelectionContainer.style.display = 'block';
+        }
+
+        // Level Selection Logic
+        const levels = {
+            1: [
+                {
+                    question: "What is the minimum age for voting in most countries?",
+                    options: ["16", "18", "21", "25"],
+                    correctAnswer: "18"
+                },
+                // Add more questions for Level 1
+            ],
+            2: [
+                {
+                    question: "What is the capital of France?",
+                    options: ["Berlin", "Madrid", "Paris", "Rome"],
+                    correctAnswer: "Paris"
+                },
+                // Add more questions for Level 2
+            ],
+            // Add more levels and questions
+        };
+
+        // Event listener for level selection
+        document.querySelectorAll('.level').forEach(level => {
+            level.addEventListener('click', () => {
+                const selectedLevel = level.getAttribute('data-level');
+                loadQuestions(selectedLevel);
+                levelSelectionContainer.style.display = 'none';
+                quizContainer.style.display = 'block';
+            });
+        });
+
+        // Function to load questions for the selected level
+        function loadQuestions(level) {
+            questionsContainer.innerHTML = ''; // Clear previous questions
+            levels[level].forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('question');
+                questionDiv.setAttribute('data-correct', q.correctAnswer);
+                questionDiv.innerHTML = `
+                    <p>${index + 1}. ${q.question}</p>
+                    <div class="options">
+                        ${q.options.map((opt, i) => `<div class="option" data-value="${opt}">${opt}</div>`).join('')}
+                    </div>
+                `;
+                questionsContainer.appendChild(questionDiv);
+            });
+
+            // Add event listeners to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', handleOptionClick);
+            });
+        }
+
+        // Handle option clicks
+        let currentQuestion = 0;
+        let starsEarned = 0;
+
+        function handleOptionClick(event) {
+            const selectedOption = event.target;
+            const questionDiv = selectedOption.closest('.question');
+            const correctAnswer = questionDiv.getAttribute('data-correct');
+
+            if (selectedOption.getAttribute('data-value') === correctAnswer) {
+                feedbackMessage.textContent = 'Good job!';
+                starsEarned++;
+                stars[starsEarned - 1].classList.add('filled');
+            } else {
+                feedbackMessage.textContent = 'Let’s try again!';
+            }
+            feedbackPopup.classList.add('show');
+            questionDiv.style.display = 'none'; // Hide the current question
+            currentQuestion++;
+
+            if (currentQuestion >= levels[1].length) { // Change `1` to the selected level if needed
+                setTimeout(() => {
+                    quizContainer.style.display = 'none';
+                    completionContainer.style.display = 'block';
+                }, 1000);
+            }
+        }
+
+        function closePopup() {
+            feedbackPopup.classList.remove('show');
+        }
+    </script>
+</body>
+</html>
