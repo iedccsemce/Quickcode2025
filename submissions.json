@@ -1,128 +1,27 @@
 [
   {
-    "name": "",
-    "project_name": "",
-    "repository_url": "",
-    "description": ""
+    "name": "Arundhati naga B R",
+    "project_name": "Farmazon",
+    "repository_url": "https://github.com/Amani-ya/Quick-Code/blob/main/Untitled-1.html",
+    "description": "helps a farmer to directly sell his products to consumers"
   },
   {
-    "name": "Sivanand.M",
-    "project_name": "Agricultural Based Website",
-    "repository_url": "https://github.com/kenasty/SeedSage",
-    "description": "A website that can used for people to learn about farming, learn about various seeds, their development, growth period, current market analysis with AI support"
+    "name": "Ram Madhav",
+    "project_name": "Blood result analyzer",
+    "repository_url": "https://github.com/xerxerxerxer1/Blood-test-analyzer",
+    "description": "By running the run.bat a simple server using groq is made that you can upload a a blood result pdf to, receiving a comprehensive analysis, do not use it over proper diagnosis it is only to help you know what it means better"
   },
+  {
     "name": "Abhishek RS",
     "project_name": "Naggasaki",
     "repository_url": "Github.com/abhishek4me/uni_hub",
     "description": "Easy syllabus"
   },
   {
-    "name": "Abhishek RS",
-    "project_name": "Naggasaki",
-    "repository_url": "Github.com/abhishek4me/uni_hub",
-    "description": "Easy syllabus"
-  },
-  {
-    "name": "Abhijit S R",
-    "project_name": "Clinomex",
-    "repository_url": "https://github.com/Abhijit-without-h/Clinomex",
-    "description": "A comprehensive tool for analyzing patient data to assess cancer and diabetes risk based on genetic markers and personal health metrics"
-  },
-  {
-    "name": "Abhijit S R",
-    "project_name": "Clinomex",
-    "repository_url": "https://github.com/Abhijit-without-h/Clinomex",
-    "description": "A comprehensive tool for analyzing patient data to assess cancer and diabetes risk based on genetic markers and personal health metrics"
-  },
-  {
-    "name": "Arundhati naga B R",
-    "project_name": "Farmazon",
-    "repository_url": "https://github.com/Amani-ya/Quick-Code/blob/main/Untitled-1.html",
-    "description": "helps a farmer to directly sell his products to consumers"
-  },
-  {
-    "name": "Arundhati naga B R",
-    "project_name": "Farmazon",
-    "repository_url": "https://github.com/Amani-ya/Quick-Code/blob/main/Untitled-1.html",
-    "description": "helps a farmer to directly sell his products to consumers"
-  },
-  {
-    "name": "Arundhati naga B R",
-    "project_name": "Farmazon",
-    "repository_url": "https://github.com/Amani-ya/Quick-Code/blob/main/Untitled-1.html",
-    "description": "helps a farmer to directly sell his products to consumers"
-  },
-  {
-    "name": "Arundhati naga B R",
-    "project_name": "Farmazon",
-    "repository_url": "https://github.com/Amani-ya/Quick-Code/blob/main/Untitled-1.html",
-    "description": "helps a farmer to directly sell his products to consumers"
-  },
-  {
-    "name": "PixelPulse Inc",
-    "project_name": "EduPulse - AI Based Gamified Study tracker",
-    "repository_url": "https://github.com/ZEYROX10/edupulse",
-    "description": "EduPulse – AI-Based Gamified Study Tracker\nEduPulse is an innovative AI-powered study tracker that makes learning engaging and efficient. Designed for students, it combines gamification, AI-driven summarization, and progress tracking to help you stay on top of your studies while leveling up your subjects.\n\nKey Features:\n✅ Gamified Learning – Earn XP for completing topics and level up each subject.\n✅ AI-Powered Summarization – Instantly generate concise topic summaries with one click.\n✅ Subject & Topic Management – Easily add, organize, and track study topics.\n✅ Notes & Reminders – Attach notes to topics for quick reference.\n✅ Calendar Integration – View topics from specific days for better planning.\n✅ XP Analytics – Monitor your study progress with in-depth XP tracking.\n\nWho is it for?\nEduPulse is perfect for students who want a structured, fun, and AI-assisted way to manage their studies efficiently.\n\nDeveloped by: PixelPulse Inc. | Semester 2, AI & ML Department\n\n🚀 Transform the way you study with EduPulse today!"
-  },
-  {
-    "name": "ABHAY PARAMESWER R",
-    "project_name": "ResQRoute",
-    "repository_url": "https://github.com/abhay-7-7-7/ResqRoute.git",
-    "description": "Introduction Every second counts in a medical emergency. In heavy traffic, ambulances struggle to reach hospitals on time, costing precious lives. Our integrated system combines AI-powered traffic management with Digital Twin technology inside the ambulance to ensure seamless emergency response. Problem Statement\n\nTraffic congestion causes significant delays in emergency response times.\nLack of real-time traffic management leads to inefficiencies in clearing paths for ambulances.\nManual intervention by traffic police is often slow and ineffective.\nMedical professionals in hospitals lack real-time patient data before arrival.\nCritical treatments are delayed due to lack of immediate health insights.\nDoctors often have to make instant decisions with limited patient data, increasing the risk of errors. Proposed Solution: AI-Powered Emergency System Our AI-driven system integrates two key technologies:\nResQRoute: AI-based traffic management that detects ambulances and clears traffic automatically.\nDigital Twin for Health: Inside the ambulance, AI builds a real-time patient clone using medical data to predict their health status and guide doctors before arrival.\nDoctor Preparation System: AI provides hospitals with real-time patient insights, ensuring the medical team is prepared for immediate treatment upon arrival. How It Works\nAmbulance Detection: AI cameras recognize ambulance symbols and prioritize traffic light changes.\nReal-Time Traffic Adjustment: AI controls traffic signals dynamically to create an open path.\nPatient Cloning Inside Ambulance: Medical devices inside the ambulance monitor vital signs and feed data to an AI model to simulate future health conditions.\nDoctor & Hospital Preparation:\nAI provides a real-time patient health clone to doctors.\nDoctors analyze vital trends and predict possible complications before arrival.\nAI suggests probable treatments based on patient history and symptoms.\nHospital staff prepares the necessary operation theaters, ICUs, or emergency rooms based on AI risk assessment.\nOptimized Emergency Care: Predictive analytics help doctors make faster, more accurate decisions for treatment.\n\n\nHere is the website like we deployed using streamlit: https://resqroute.streamlit.app/"
-  },
-  {
-    "name": "ABHAY PARAMESWER R",
-    "project_name": "ResQRoute",
-    "repository_url": "https://github.com/abhay-7-7-7/ResqRoute.git",
-    "description": "Introduction Every second counts in a medical emergency. In heavy traffic, ambulances struggle to reach hospitals on time, costing precious lives. Our integrated system combines AI-powered traffic management with Digital Twin technology inside the ambulance to ensure seamless emergency response. Problem Statement\n\nTraffic congestion causes significant delays in emergency response times.\nLack of real-time traffic management leads to inefficiencies in clearing paths for ambulances.\nManual intervention by traffic police is often slow and ineffective.\nMedical professionals in hospitals lack real-time patient data before arrival.\nCritical treatments are delayed due to lack of immediate health insights.\nDoctors often have to make instant decisions with limited patient data, increasing the risk of errors. Proposed Solution: AI-Powered Emergency System Our AI-driven system integrates two key technologies:\nResQRoute: AI-based traffic management that detects ambulances and clears traffic automatically.\nDigital Twin for Health: Inside the ambulance, AI builds a real-time patient clone using medical data to predict their health status and guide doctors before arrival.\nDoctor Preparation System: AI provides hospitals with real-time patient insights, ensuring the medical team is prepared for immediate treatment upon arrival. How It Works\nAmbulance Detection: AI cameras recognize ambulance symbols and prioritize traffic light changes.\nReal-Time Traffic Adjustment: AI controls traffic signals dynamically to create an open path.\nPatient Cloning Inside Ambulance: Medical devices inside the ambulance monitor vital signs and feed data to an AI model to simulate future health conditions.\nDoctor & Hospital Preparation:\nAI provides a real-time patient health clone to doctors.\nDoctors analyze vital trends and predict possible complications before arrival.\nAI suggests probable treatments based on patient history and symptoms.\nHospital staff prepares the necessary operation theaters, ICUs, or emergency rooms based on AI risk assessment.\nOptimized Emergency Care: Predictive analytics help doctors make faster, more accurate decisions for treatment.\n\n\nHere is the website like we deployed using streamlit: https://resqroute.streamlit.app/"
-  },
-  {
-    "name": "ABHAY PARAMESWER R",
-    "project_name": "ResQRoute",
-    "repository_url": "https://github.com/abhay-7-7-7/ResqRoute.git",
-    "description": "Introduction Every second counts in a medical emergency. In heavy traffic, ambulances struggle to reach hospitals on time, costing precious lives. Our integrated system combines AI-powered traffic management with Digital Twin technology inside the ambulance to ensure seamless emergency response. Problem Statement\n\nTraffic congestion causes significant delays in emergency response times.\nLack of real-time traffic management leads to inefficiencies in clearing paths for ambulances.\nManual intervention by traffic police is often slow and ineffective.\nMedical professionals in hospitals lack real-time patient data before arrival.\nCritical treatments are delayed due to lack of immediate health insights.\nDoctors often have to make instant decisions with limited patient data, increasing the risk of errors. Proposed Solution: AI-Powered Emergency System Our AI-driven system integrates two key technologies:\nResQRoute: AI-based traffic management that detects ambulances and clears traffic automatically.\nDigital Twin for Health: Inside the ambulance, AI builds a real-time patient clone using medical data to predict their health status and guide doctors before arrival.\nDoctor Preparation System: AI provides hospitals with real-time patient insights, ensuring the medical team is prepared for immediate treatment upon arrival. How It Works\nAmbulance Detection: AI cameras recognize ambulance symbols and prioritize traffic light changes.\nReal-Time Traffic Adjustment: AI controls traffic signals dynamically to create an open path.\nPatient Cloning Inside Ambulance: Medical devices inside the ambulance monitor vital signs and feed data to an AI model to simulate future health conditions.\nDoctor & Hospital Preparation:\nAI provides a real-time patient health clone to doctors.\nDoctors analyze vital trends and predict possible complications before arrival.\nAI suggests probable treatments based on patient history and symptoms.\nHospital staff prepares the necessary operation theaters, ICUs, or emergency rooms based on AI risk assessment.\nOptimized Emergency Care: Predictive analytics help doctors make faster, more accurate decisions for treatment.\n\n\nHere is the website like we deployed using streamlit: https://resqroute.streamlit.app/"
-  },
-  {
-    "name": "ABHAY PARAMESWER R",
-    "project_name": "ResQRoute",
-    "repository_url": "https://github.com/abhay-7-7-7/ResqRoute.git",
-    "description": "Introduction Every second counts in a medical emergency. In heavy traffic, ambulances struggle to reach hospitals on time, costing precious lives. Our integrated system combines AI-powered traffic management with Digital Twin technology inside the ambulance to ensure seamless emergency response. Problem Statement\n\nTraffic congestion causes significant delays in emergency response times.\nLack of real-time traffic management leads to inefficiencies in clearing paths for ambulances.\nManual intervention by traffic police is often slow and ineffective.\nMedical professionals in hospitals lack real-time patient data before arrival.\nCritical treatments are delayed due to lack of immediate health insights.\nDoctors often have to make instant decisions with limited patient data, increasing the risk of errors. Proposed Solution: AI-Powered Emergency System Our AI-driven system integrates two key technologies:\nResQRoute: AI-based traffic management that detects ambulances and clears traffic automatically.\nDigital Twin for Health: Inside the ambulance, AI builds a real-time patient clone using medical data to predict their health status and guide doctors before arrival.\nDoctor Preparation System: AI provides hospitals with real-time patient insights, ensuring the medical team is prepared for immediate treatment upon arrival. How It Works\nAmbulance Detection: AI cameras recognize ambulance symbols and prioritize traffic light changes.\nReal-Time Traffic Adjustment: AI controls traffic signals dynamically to create an open path.\nPatient Cloning Inside Ambulance: Medical devices inside the ambulance monitor vital signs and feed data to an AI model to simulate future health conditions.\nDoctor & Hospital Preparation:\nAI provides a real-time patient health clone to doctors.\nDoctors analyze vital trends and predict possible complications before arrival.\nAI suggests probable treatments based on patient history and symptoms.\nHospital staff prepares the necessary operation theaters, ICUs, or emergency rooms based on AI risk assessment.\nOptimized Emergency Care: Predictive analytics help doctors make faster, more accurate decisions for treatment.\n\n\nHere is the website like we deployed using streamlit: https://resqroute.streamlit.app/"
-  },
-  {
-    "name": "ABHAY PARAMESWER R",
-    "project_name": "ResQRoute",
-    "repository_url": "https://github.com/abhay-7-7-7/ResqRoute.git",
-    "description": "Introduction Every second counts in a medical emergency. In heavy traffic, ambulances struggle to reach hospitals on time, costing precious lives. Our integrated system combines AI-powered traffic management with Digital Twin technology inside the ambulance to ensure seamless emergency response. Problem Statement\n\nTraffic congestion causes significant delays in emergency response times.\nLack of real-time traffic management leads to inefficiencies in clearing paths for ambulances.\nManual intervention by traffic police is often slow and ineffective.\nMedical professionals in hospitals lack real-time patient data before arrival.\nCritical treatments are delayed due to lack of immediate health insights.\nDoctors often have to make instant decisions with limited patient data, increasing the risk of errors. Proposed Solution: AI-Powered Emergency System Our AI-driven system integrates two key technologies:\nResQRoute: AI-based traffic management that detects ambulances and clears traffic automatically.\nDigital Twin for Health: Inside the ambulance, AI builds a real-time patient clone using medical data to predict their health status and guide doctors before arrival.\nDoctor Preparation System: AI provides hospitals with real-time patient insights, ensuring the medical team is prepared for immediate treatment upon arrival. How It Works\nAmbulance Detection: AI cameras recognize ambulance symbols and prioritize traffic light changes.\nReal-Time Traffic Adjustment: AI controls traffic signals dynamically to create an open path.\nPatient Cloning Inside Ambulance: Medical devices inside the ambulance monitor vital signs and feed data to an AI model to simulate future health conditions.\nDoctor & Hospital Preparation:\nAI provides a real-time patient health clone to doctors.\nDoctors analyze vital trends and predict possible complications before arrival.\nAI suggests probable treatments based on patient history and symptoms.\nHospital staff prepares the necessary operation theaters, ICUs, or emergency rooms based on AI risk assessment.\nOptimized Emergency Care: Predictive analytics help doctors make faster, more accurate decisions for treatment.\n\n\nHere is the website like we deployed using streamlit: https://resqroute.streamlit.app/"
-  },
-  {
-    "name": "ABHAY PARAMESWER R",
-    "project_name": "ResQRoute",
-    "repository_url": "https://github.com/abhay-7-7-7/ResqRoute.git",
-    "description": "Introduction Every second counts in a medical emergency. In heavy traffic, ambulances struggle to reach hospitals on time, costing precious lives. Our integrated system combines AI-powered traffic management with Digital Twin technology inside the ambulance to ensure seamless emergency response. Problem Statement\n\nTraffic congestion causes significant delays in emergency response times.\nLack of real-time traffic management leads to inefficiencies in clearing paths for ambulances.\nManual intervention by traffic police is often slow and ineffective.\nMedical professionals in hospitals lack real-time patient data before arrival.\nCritical treatments are delayed due to lack of immediate health insights.\nDoctors often have to make instant decisions with limited patient data, increasing the risk of errors. Proposed Solution: AI-Powered Emergency System Our AI-driven system integrates two key technologies:\nResQRoute: AI-based traffic management that detects ambulances and clears traffic automatically.\nDigital Twin for Health: Inside the ambulance, AI builds a real-time patient clone using medical data to predict their health status and guide doctors before arrival.\nDoctor Preparation System: AI provides hospitals with real-time patient insights, ensuring the medical team is prepared for immediate treatment upon arrival. How It Works\nAmbulance Detection: AI cameras recognize ambulance symbols and prioritize traffic light changes.\nReal-Time Traffic Adjustment: AI controls traffic signals dynamically to create an open path.\nPatient Cloning Inside Ambulance: Medical devices inside the ambulance monitor vital signs and feed data to an AI model to simulate future health conditions.\nDoctor & Hospital Preparation:\nAI provides a real-time patient health clone to doctors.\nDoctors analyze vital trends and predict possible complications before arrival.\nAI suggests probable treatments based on patient history and symptoms.\nHospital staff prepares the necessary operation theaters, ICUs, or emergency rooms based on AI risk assessment.\nOptimized Emergency Care: Predictive analytics help doctors make faster, more accurate decisions for treatment.\n\n\nHere is the website like we deployed using streamlit: https://resqroute.streamlit.app/"
-  },
-  {
-    "name": "ABHAY PARAMESWER R",
-    "project_name": "ResQRoute",
-    "repository_url": "https://github.com/abhay-7-7-7/ResqRoute.git",
-    "description": "Introduction Every second counts in a medical emergency. In heavy traffic, ambulances struggle to reach hospitals on time, costing precious lives. Our integrated system combines AI-powered traffic management with Digital Twin technology inside the ambulance to ensure seamless emergency response. Problem Statement\n\nTraffic congestion causes significant delays in emergency response times.\nLack of real-time traffic management leads to inefficiencies in clearing paths for ambulances.\nManual intervention by traffic police is often slow and ineffective.\nMedical professionals in hospitals lack real-time patient data before arrival.\nCritical treatments are delayed due to lack of immediate health insights.\nDoctors often have to make instant decisions with limited patient data, increasing the risk of errors. Proposed Solution: AI-Powered Emergency System Our AI-driven system integrates two key technologies:\nResQRoute: AI-based traffic management that detects ambulances and clears traffic automatically.\nDigital Twin for Health: Inside the ambulance, AI builds a real-time patient clone using medical data to predict their health status and guide doctors before arrival.\nDoctor Preparation System: AI provides hospitals with real-time patient insights, ensuring the medical team is prepared for immediate treatment upon arrival. How It Works\nAmbulance Detection: AI cameras recognize ambulance symbols and prioritize traffic light changes.\nReal-Time Traffic Adjustment: AI controls traffic signals dynamically to create an open path.\nPatient Cloning Inside Ambulance: Medical devices inside the ambulance monitor vital signs and feed data to an AI model to simulate future health conditions.\nDoctor & Hospital Preparation:\nAI provides a real-time patient health clone to doctors.\nDoctors analyze vital trends and predict possible complications before arrival.\nAI suggests probable treatments based on patient history and symptoms.\nHospital staff prepares the necessary operation theaters, ICUs, or emergency rooms based on AI risk assessment.\nOptimized Emergency Care: Predictive analytics help doctors make faster, more accurate decisions for treatment.\n\n\nHere is the website like we deployed using streamlit: https://resqroute.streamlit.app/"
-  },
-  {
-    "name": "ABHAY PARAMESWER R",
-    "project_name": "ResQRoute",
-    "repository_url": "https://github.com/abhay-7-7-7/ResqRoute.git",
-    "description": "Introduction Every second counts in a medical emergency. In heavy traffic, ambulances struggle to reach hospitals on time, costing precious lives. Our integrated system combines AI-powered traffic management with Digital Twin technology inside the ambulance to ensure seamless emergency response. Problem Statement\n\nTraffic congestion causes significant delays in emergency response times.\nLack of real-time traffic management leads to inefficiencies in clearing paths for ambulances.\nManual intervention by traffic police is often slow and ineffective.\nMedical professionals in hospitals lack real-time patient data before arrival.\nCritical treatments are delayed due to lack of immediate health insights.\nDoctors often have to make instant decisions with limited patient data, increasing the risk of errors. Proposed Solution: AI-Powered Emergency System Our AI-driven system integrates two key technologies:\nResQRoute: AI-based traffic management that detects ambulances and clears traffic automatically.\nDigital Twin for Health: Inside the ambulance, AI builds a real-time patient clone using medical data to predict their health status and guide doctors before arrival.\nDoctor Preparation System: AI provides hospitals with real-time patient insights, ensuring the medical team is prepared for immediate treatment upon arrival. How It Works\nAmbulance Detection: AI cameras recognize ambulance symbols and prioritize traffic light changes.\nReal-Time Traffic Adjustment: AI controls traffic signals dynamically to create an open path.\nPatient Cloning Inside Ambulance: Medical devices inside the ambulance monitor vital signs and feed data to an AI model to simulate future health conditions.\nDoctor & Hospital Preparation:\nAI provides a real-time patient health clone to doctors.\nDoctors analyze vital trends and predict possible complications before arrival.\nAI suggests probable treatments based on patient history and symptoms.\nHospital staff prepares the necessary operation theaters, ICUs, or emergency rooms based on AI risk assessment.\nOptimized Emergency Care: Predictive analytics help doctors make faster, more accurate decisions for treatment.\n\n\nHere is the website like we deployed using streamlit: https://resqroute.streamlit.app/"
-  },
-  {
-    "name": "ABHAY PARAMESWER R",
-    "project_name": "ResQRoute",
-    "repository_url": "https://github.com/abhay-7-7-7/ResqRoute.git",
-    "description": "Introduction Every second counts in a medical emergency. In heavy traffic, ambulances struggle to reach hospitals on time, costing precious lives. Our integrated system combines AI-powered traffic management with Digital Twin technology inside the ambulance to ensure seamless emergency response. Problem Statement\n\nTraffic congestion causes significant delays in emergency response times.\nLack of real-time traffic management leads to inefficiencies in clearing paths for ambulances.\nManual intervention by traffic police is often slow and ineffective.\nMedical professionals in hospitals lack real-time patient data before arrival.\nCritical treatments are delayed due to lack of immediate health insights.\nDoctors often have to make instant decisions with limited patient data, increasing the risk of errors. Proposed Solution: AI-Powered Emergency System Our AI-driven system integrates two key technologies:\nResQRoute: AI-based traffic management that detects ambulances and clears traffic automatically.\nDigital Twin for Health: Inside the ambulance, AI builds a real-time patient clone using medical data to predict their health status and guide doctors before arrival.\nDoctor Preparation System: AI provides hospitals with real-time patient insights, ensuring the medical team is prepared for immediate treatment upon arrival. How It Works\nAmbulance Detection: AI cameras recognize ambulance symbols and prioritize traffic light changes.\nReal-Time Traffic Adjustment: AI controls traffic signals dynamically to create an open path.\nPatient Cloning Inside Ambulance: Medical devices inside the ambulance monitor vital signs and feed data to an AI model to simulate future health conditions.\nDoctor & Hospital Preparation:\nAI provides a real-time patient health clone to doctors.\nDoctors analyze vital trends and predict possible complications before arrival.\nAI suggests probable treatments based on patient history and symptoms.\nHospital staff prepares the necessary operation theaters, ICUs, or emergency rooms based on AI risk assessment.\nOptimized Emergency Care: Predictive analytics help doctors make faster, more accurate decisions for treatment.\n\n\nHere is the website like we deployed using streamlit: https://resqroute.streamlit.app/"
-  },
-  {
-    "name": "ABHAY PARAMESWER R",
-    "project_name": "ResQRoute",
-    "repository_url": "https://github.com/abhay-7-7-7/ResqRoute.git",
-    "description": "Introduction Every second counts in a medical emergency. In heavy traffic, ambulances struggle to reach hospitals on time, costing precious lives. Our integrated system combines AI-powered traffic management with Digital Twin technology inside the ambulance to ensure seamless emergency response. Problem Statement\n\nTraffic congestion causes significant delays in emergency response times.\nLack of real-time traffic management leads to inefficiencies in clearing paths for ambulances.\nManual intervention by traffic police is often slow and ineffective.\nMedical professionals in hospitals lack real-time patient data before arrival.\nCritical treatments are delayed due to lack of immediate health insights.\nDoctors often have to make instant decisions with limited patient data, increasing the risk of errors. Proposed Solution: AI-Powered Emergency System Our AI-driven system integrates two key technologies:\nResQRoute: AI-based traffic management that detects ambulances and clears traffic automatically.\nDigital Twin for Health: Inside the ambulance, AI builds a real-time patient clone using medical data to predict their health status and guide doctors before arrival.\nDoctor Preparation System: AI provides hospitals with real-time patient insights, ensuring the medical team is prepared for immediate treatment upon arrival. How It Works\nAmbulance Detection: AI cameras recognize ambulance symbols and prioritize traffic light changes.\nReal-Time Traffic Adjustment: AI controls traffic signals dynamically to create an open path.\nPatient Cloning Inside Ambulance: Medical devices inside the ambulance monitor vital signs and feed data to an AI model to simulate future health conditions.\nDoctor & Hospital Preparation:\nAI provides a real-time patient health clone to doctors.\nDoctors analyze vital trends and predict possible complications before arrival.\nAI suggests probable treatments based on patient history and symptoms.\nHospital staff prepares the necessary operation theaters, ICUs, or emergency rooms based on AI risk assessment.\nOptimized Emergency Care: Predictive analytics help doctors make faster, more accurate decisions for treatment.\n\n\nHere is the website like we deployed using streamlit: https://resqroute.streamlit.app/"
+    "name": "Alan.s.robin",
+    "project_name": "Health assistant chatbot",
+    "repository_url": "https://github.com/alansrobin/health-care-chat-bot",
+    "description": "AI-Powered Healthcare Assistant with Doctor Appointments & Reminders\n\n\ud83d\udccc Project Overview\n\nThis project is an AI-powered healthcare assistant that helps users consult a chatbot for health-related queries, book doctor appointments, and set medicine reminders using Google Calendar. It combines natural language AI, automated scheduling, and virtual consultations into a seamless healthcare experience.\n\n\n---\n\n\ud83d\udee0\ufe0f Technologies Used\n\nGoogle Gemini AI \u2013 For intelligent chatbot responses.\n\nStreamlit \u2013 For building an interactive web-based UI.\n\nGoogle Calendar API \u2013 To book doctor appointments and set reminders.\n\nGoogle Meet API \u2013 To schedule virtual doctor consultations.\n\nGoogle Authentication (OAuth & Service Account) \u2013 For secure access to Google services.\n\nNLTK (Natural Language Toolkit) \u2013 For processing user queries.\n\n\n\n---\n\n\ud83d\ude80 Why We Created It\n\nBridging the gap between patients and healthcare professionals.\n\nProviding instant AI-driven health advice before consulting a doctor.\n\nReducing missed medications by scheduling reminders.\n\nMaking healthcare more accessible with virtual consultations.\n\n\n\n---\n\n\ud83d\udd11 Key Features\n\n\u2705 AI Chatbot for Healthcare Advice \u2013 Get instant answers about symptoms, medications, and health tips.\n\u2705 Doctor Appointment Booking \u2013 Schedule an in-person or virtual appointment with a doctor via Google Calendar.\n\u2705 Google Meet Integration \u2013 Generates a video call link for remote consultations.\n\u2705 Medicine Reminder System \u2013 Set alerts for taking medicines on time using Google Calendar.\n\u2705 Secure Google Authentication \u2013 Ensures only authorized users access their own calendar and appointments.\n\n\n---\n\nThis project streamlines healthcare access with AI & automation\u2014making doctor consultations and medical reminders more convenient than ever! \ud83d\ude80\n\nWould you like a detailed README file for deployment instructions?"
   },
   {
     "name": "Alphonse J S",
@@ -131,10 +30,10 @@
     "description": "VCARE is an AI-enhanced healthcare application designed to provide a comprehensive suite of medical services, including AI chatbot assistance, symptom checking, doctor consultation booking, emergency SOS calls, and more. The app focuses on providing accessible and efficient healthcare solutions, integrating government schemes, hospital room allocations."
   },
   {
-    "name": "Arathy B S",
-    "project_name": "Intelligent Legal Research for Enhanced Decision Making",
-    "repository_url": "https://github.com/abhiabhi1474/Intelligent-Legal-Research-For-Enhanced-Decision-Making.git",
-    "description": "This project is a Flask-based API designed to analyze legal scenarios, retrieve relevant laws, and predict legal outcomes using Natural Language Processing (NLP) and Machine Learning (ML). It helps users by identifying applicable laws, finding past legal precedents, and estimating case success probabilities."
+    "name": "PixelPulse Inc",
+    "project_name": "EduPulse - AI Based Gamified Study tracker",
+    "repository_url": "https://github.com/ZEYROX10/edupulse",
+    "description": "EduPulse \u2013 AI-Based Gamified Study Tracker\nEduPulse is an innovative AI-powered study tracker that makes learning engaging and efficient. Designed for students, it combines gamification, AI-driven summarization, and progress tracking to help you stay on top of your studies while leveling up your subjects.\n\nKey Features:\n\u2705 Gamified Learning \u2013 Earn XP for completing topics and level up each subject.\n\u2705 AI-Powered Summarization \u2013 Instantly generate concise topic summaries with one click.\n\u2705 Subject & Topic Management \u2013 Easily add, organize, and track study topics.\n\u2705 Notes & Reminders \u2013 Attach notes to topics for quick reference.\n\u2705 Calendar Integration \u2013 View topics from specific days for better planning.\n\u2705 XP Analytics \u2013 Monitor your study progress with in-depth XP tracking.\n\nWho is it for?\nEduPulse is perfect for students who want a structured, fun, and AI-assisted way to manage their studies efficiently.\n\nDeveloped by: PixelPulse Inc. | Semester 2, AI & ML Department\n\n\ud83d\ude80 Transform the way you study with EduPulse today!"
   },
   {
     "name": "Sacheth Sivaprasad",
@@ -143,15 +42,111 @@
     "description": "Crop Disease Classifier is a web-based application that helps farmers and agricultural researchers identify plant diseases using machine learning. The system allows users to upload images of crop leaves, which are analyzed by a pre-trained AI model for plant disease identification. The model predicts the disease along with confidence scores, enabling users to take timely action. Built with Flask for the backend and Hugging Face Transformers for image classification, the project aims to provide an accessible and efficient solution for early disease detection in crops."
   },
   {
-    "name": "Ram Madhav",
-    "project_name": "Blood result analyzer",
-    "repository_url": "https://github.com/xerxerxerxer1/Blood-test-analyzer",
-    "description": "By running the run.bat a simple server using groq is made that you can upload a a blood result pdf to, receiving a comprehensive analysis, do not use it over proper diagnosis it is only to help you know what it means better"
+    "name": "team 19",
+    "project_name": "LEGAL AI",
+    "repository_url": "https://github.com/h3bin/legal-ai",
+    "description": "LEGAL AI.\n\nLegal AI is a web-based platform designed to help students easily understand Indian laws. It utilizes AI to provide relevant legal information based on user queries, making legal knowledge more accessible and student-friendly."
   },
   {
-    "name": "Ram Madhav",
-    "project_name": "Blood result analyzer",
-    "repository_url": "https://github.com/xerxerxerxer1/Blood-test-analyzer",
-    "description": "By running the run.bat a simple server using groq is made that you can upload a a blood result pdf to, receiving a comprehensive analysis, do not use it over proper diagnosis it is only to help you know what it means better"
+    "name": "Fabena Franklin",
+    "project_name": "Farm Guard",
+    "repository_url": "https://github.com/fabena-franklin/farmguard2",
+    "description": "\ud83d\ude9c FarmGuard App - Empowering Farmers with Technology \ud83c\udf3e\n\n        --STRAIGHT TO YOU---\n\nFarmGuard is a web-based platform designed to help farmers sell their products, monitor their crops, and purchase farming essentials directly from suppliers without middlemen. The platform aims to:\n\t\u2022\t\u2705 Increase farmers\u2019 profit margins by allowing direct sales to consumers or wholesalers.\n\t\u2022\t\u2705 Provide AI-powered crop monitoring and demand analysis (simulated without real APIs).\n\t\u2022\t\u2705 Offer a marketplace for seeds, fertilizers, and tools directly from suppliers.\n\u2705 Our Vision\n\n\t\ud83d\ude9c \u201cEmpowering Farmers. Reducing Middlemen. Boosting Agriculture.\u201d\nFarmGuard aims to create a sustainable digital ecosystem where farmers can directly connect with consumers, wholesalers, and suppliers, increasing their profits and making agriculture smarter."
+  },
+  {
+    "name": "Akshara Ambrose",
+    "project_name": "Agri Vision",
+    "repository_url": "https://github.com/SAI-VISHNU-M-S/Agri-Vision",
+    "description": "It's a non-profit website where farmers can sell their produces while getting the profit for what they earned. Clients can directly buy fresh products from the farmer and get it delivered on their doorstep."
+  },
+  {
+    "name": "Sagar M Santhosh",
+    "project_name": "VoicePresentationApp",
+    "repository_url": "https://github.com/SMS6294/VoicePresentationApp",
+    "description": "Aaliya H Nowshad , Sagar M Santhosh, Visakh Sheeja Nibu,  Aaron A"
+  },
+  {
+    "name": "Alan Biji Alex",
+    "project_name": "Cyber Safety Tool",
+    "repository_url": "https://github.com/XLannn/Hackathon-11th-March-2025.git",
+    "description": "*Report on AI-Driven Safety and Privacy Website*\n\n*Introduction*\nThis report outlines the features, functionality, and impact of the website designed to improve user safety and privacy online. The platform integrates three core tools aimed at protecting users from online scams, enhancing data security awareness, and enabling anonymous crime reporting.\n\n*1. Phishing Detection System*\nThe phishing detection tool is developed to analyze suspicious URLs and identify potential fraud. By leveraging AI algorithms and online threat databases, this system can:\n- Detect fake websites that impersonate legitimate platforms.\n- Identify phishing attempts that aim to steal user credentials or financial information.\n- Provide users with instant results, categorizing URLs as \"Safe\" or \"Phishing Detected.\"\n\n*2. Terms & Conditions Analyzer*\nThis tool scans Terms & Conditions (ToS) documents for potential security risks and privacy concerns. It offers the following benefits:\n- Identifies hidden clauses that may compromise user data privacy.\n- Detects potential legal loopholes that companies may exploit to misuse consumer information.\n- Provides easy-to-understand summaries of complex legal jargon to inform users about potential risks.\n\n*3. Anonymous Reporting System*\nThe anonymous reporting platform is designed to provide a secure channel for individuals to report crimes without revealing their identity. Key features include:\n- End-to-end encryption for complete privacy.\n- An intuitive interface that simplifies the reporting process.\n- Real-time alerts that notify concerned authorities for immediate action.\n\n*Technological Implementation*\n- *Flask Framework:* The website is built using Flask, a lightweight yet powerful Python web framework that ensures fast development and scalability.\n- *AI Integration:* Machine learning models are integrated to enhance the accuracy of phishing detection and ToS analysis.\n- *Encryption Protocols:* Advanced encryption ensures that data shared via the anonymous reporting platform remains secure and private.\n\n*User Impact and Benefits*\n- *Enhanced Online Safety:* Users gain confidence in identifying phishing websites, protecting their data from cybercriminals.\n- *Informed Decisions:* The Terms & Conditions analyzer empowers users with knowledge about how their data is managed.\n- *Empowered Reporting:* The anonymous reporting platform enables individuals to voice their concerns without risking exposure or retaliation.\n\n*Conclusion*\nThis AI-driven platform combines security, privacy, and public safety into one cohesive solution. By offering phishing detection, Terms & Conditions analysis, and anonymous reporting, the website provides comprehensive protection for individuals navigating the digital world. Its robust features ensure both proactive prevention and responsive action in safeguarding\u00a0users\u00a0online."
+  },
+  {
+    "name": "Keerthana N S",
+    "project_name": "AI-LEGAL ASSISTANT",
+    "repository_url": "https://github.com/ANANTHU-klr/LEGAL-ASSISTANT-AI.git",
+    "description": "Your AI-based legal research tool sounds powerful and comprehensive. Here's an improved project description that integrates all these features:\n\n\nAI-Powered Legal Research Assistant\n\nProject Overview:\nThe AI-Powered Legal Research Assistant is an intelligent web-based platform designed to support legal professionals, students, and researchers. Equipped with advanced AI capabilities, this tool simplifies complex legal analysis by providing fast insights, structured references, and intelligent argument generation.\n\n\nKey Features\n\n\u2705 Legal Advice Engine: Provides AI-driven guidance for legal queries based on uploaded documents or user questions.\n\u2705 Case Summarization: Uses NLP to condense lengthy case judgments into concise summaries.\n\u2705 Citation Generator: Automatically formats references for case laws, statutes, and legal journals.\n\u2705 Argument Generator: Suggests logical arguments based on case facts and legal precedents.\n\u2705 Bias Detection: Identifies potential bias in judgments, legal language, or argument structure.\n\u2705 IPC Search: Enables quick lookup of Indian Penal Code IPC sections for relevant laws.\n\u2705 Legal Research Assistant: Streamlines research by analyzing multiple cases for patterns, judgments, and legal reasoning.\n\u2705 Document Analysis: Extracts text from uploaded PDFs or DOC files, highlighting key points, clauses, and important legal terms"
+  },
+  {
+    "name": "Adithya Baiju",
+    "project_name": "Law Advisory",
+    "repository_url": "https://github.com/CAPTAINIFZY/Law-Advisory.git",
+    "description": "A website that helps with legal assistance, includes an AI chatbot, Law search for searching on specific law issues, Document generation which helps in generating legal documents,"
+  },
+  {
+    "name": "Arjun Jayakumar",
+    "project_name": "Study Planner and Learning Partner",
+    "repository_url": "https://github.com/definitelyarjun/quick-code-2025",
+    "description": "Study Planner and Learning Assistant\nA personalized, college-specific study planner and learning assistant powered by Retrieval-Augmented Generation (RAG). This tool helps students organize their study schedules, track progress, and get context-aware answers from their uploaded study materials (e.g., PDFs). Designed to adapt to individual learning paces and deadlines, it combines a user-friendly frontend with a robust backend API.\n\nFeatures\nDocument Upload & Processing: Upload PDFs and extract text for querying and analysis.\nStudy Progress Tracking: Tasks and works can be scheduled manually by the user to meet the deadlines.\nAdaptive Study Schedules: Generate schedules based on learning pace, content complexity, and test deadlines.\nRAG-Powered Q&A: Query study materials using natural language and receive relevant, context-aware answers.\nVisual Feedback: Interactive UI with progress bars, calendars, and chat-like query responses."
+  },
+  {
+    "name": "Neeraj Mohan D S",
+    "project_name": "VakeelAI",
+    "repository_url": "https://github.com/NeerajMohan57/LegalAdvisorAI.git",
+    "description": "A legal advisory AI."
+  },
+  {
+    "name": "Ashish Shibu Zachariah",
+    "project_name": "Law Smart",
+    "repository_url": "https://github.com/AshishSZ/legal-code.git",
+    "description": "Our Legal Chatbot is a user-friendly digital assistant that guides you through legal issues in a structured way. It begins by receiving your legal query\u2014either through a typed message or document upload\u2014and then quickly determines whether your issue is a high-level crime (like murder, POCSO cases, or narcotics offenses) or a general legal matter (such as employment disputes or contract issues). For serious cases, it immediately provides relevant legal sections and emphasizes the need for professional legal counsel, while for general matters, it asks follow-up questions to gather more details about your situation. Based on your answers, the chatbot analyzes your case, explains the necessary legal steps, outlines required documents, and simplifies applicable laws so you can understand your rights and options. Finally, it summarizes the information provided and asks for feedback, ensuring that your needs are fully addressed and offering further guidance if needed."
+  },
+  {
+    "name": "Arjun Subhash Kumar",
+    "project_name": "HealthSync-AI",
+    "repository_url": "https://github.com/aadvaitav/HealthSync-AI-Medical-Imaging-Analysis-Lifestyle-Recommendations.git",
+    "description": "HealthSync AI combines MONAI-powered medical image analysis (segmentation, classification, burn detection, skin cancer screening) with lifestyle recommendations for storytelling, music, nutrition, and exercise. Built with Gradio, it serves both clinical professionals and health-conscious individuals."
+  },
+  {
+    "name": "Sree Hari. A",
+    "project_name": "Ishara - Indian Sign Language Translator",
+    "repository_url": "https://github.com/afsaldigitalart/ishara-sign-language-translator.git",
+    "description": "Ishara is a real-time sign language translator that bridges the communication gap between sign language users and non-signers. It leverages machine learning and computer vision to recognize sign language gestures and convert them into text."
+  },
+  {
+    "name": "P NISA",
+    "project_name": "Legal Advice Assistant",
+    "repository_url": "https://github.com/akshayrv6/LegalNavigator",
+    "description": "\ud835\udc73\ud835\udc86\ud835\udc88\ud835\udc82\ud835\udc8d \ud835\udc68\ud835\udc85\ud835\udc97\ud835\udc8a\ud835\udc84\ud835\udc86 \ud835\udc68\ud835\udc94\ud835\udc94\ud835\udc8a\ud835\udc94\ud835\udc95\ud835\udc82\ud835\udc8f\ud835\udc95\n\n\ud835\udc6b\ud835\udc86\ud835\udc94\ud835\udc84\ud835\udc93\ud835\udc8a\ud835\udc91\ud835\udc95\ud835\udc8a\ud835\udc90\ud835\udc8f\n\n\ud835\udc73\ud835\udc86\ud835\udc88\ud835\udc82\ud835\udc8d \ud835\udc68\ud835\udc85\ud835\udc97\ud835\udc8a\ud835\udc84\ud835\udc86 \ud835\udc68\ud835\udc94\ud835\udc94\ud835\udc8a\ud835\udc94\ud835\udc95\ud835\udc82\ud835\udc8f\ud835\udc95 \ud835\udc8a\ud835\udc94 \ud835\udc82\ud835\udc8f \ud835\udc68\ud835\udc70-\ud835\udc91\ud835\udc90\ud835\udc98\ud835\udc86\ud835\udc93\ud835\udc86\ud835\udc85 \ud835\udc84\ud835\udc89\ud835\udc82\ud835\udc95\ud835\udc83\ud835\udc90\ud835\udc95 \ud835\udc85\ud835\udc86\ud835\udc94\ud835\udc8a\ud835\udc88\ud835\udc8f\ud835\udc86\ud835\udc85 \ud835\udc95\ud835\udc90 \ud835\udc91\ud835\udc93\ud835\udc90\ud835\udc97\ud835\udc8a\ud835\udc85\ud835\udc86 \ud835\udc8a\ud835\udc8f\ud835\udc94\ud835\udc95\ud835\udc82\ud835\udc8f\ud835\udc95 \ud835\udc8d\ud835\udc86\ud835\udc88\ud835\udc82\ud835\udc8d \ud835\udc8a\ud835\udc8f\ud835\udc87\ud835\udc90\ud835\udc93\ud835\udc8e\ud835\udc82\ud835\udc95\ud835\udc8a\ud835\udc90\ud835\udc8f \ud835\udc83\ud835\udc82\ud835\udc94\ud835\udc86\ud835\udc85 \ud835\udc90\ud835\udc8f \ud835\udc96\ud835\udc94\ud835\udc86\ud835\udc93 \ud835\udc92\ud835\udc96\ud835\udc86\ud835\udc93\ud835\udc8a\ud835\udc86\ud835\udc94. \ud835\udc70\ud835\udc95 \ud835\udc82\ud835\udc8d\ud835\udc8d\ud835\udc90\ud835\udc98\ud835\udc94 \ud835\udc96\ud835\udc94\ud835\udc86\ud835\udc93\ud835\udc94 \ud835\udc95\ud835\udc90 \ud835\udc82\ud835\udc94\ud835\udc8c \ud835\udc8d\ud835\udc86\ud835\udc88\ud835\udc82\ud835\udc8d \ud835\udc92\ud835\udc96\ud835\udc86\ud835\udc94\ud835\udc95\ud835\udc8a\ud835\udc90\ud835\udc8f\ud835\udc94 \ud835\udc83\ud835\udc9a \ud835\udc94\ud835\udc91\ud835\udc86\ud835\udc84\ud835\udc8a\ud835\udc87\ud835\udc9a\ud835\udc8a\ud835\udc8f\ud835\udc88 \ud835\udc82 \ud835\udc84\ud835\udc90\ud835\udc96\ud835\udc8f\ud835\udc95\ud835\udc93\ud835\udc9a \ud835\udc82\ud835\udc8f\ud835\udc85 \ud835\udc82 \ud835\udc91\ud835\udc82\ud835\udc93\ud835\udc95\ud835\udc8a\ud835\udc84\ud835\udc96\ud835\udc8d\ud835\udc82\ud835\udc93 \ud835\udc8d\ud835\udc86\ud835\udc88\ud835\udc82\ud835\udc8d \ud835\udc85\ud835\udc90\ud835\udc8e\ud835\udc82\ud835\udc8a\ud835\udc8f, \ud835\udc94\ud835\udc96\ud835\udc84\ud835\udc89 \ud835\udc82\ud835\udc94 \ud835\udc83\ud835\udc96\ud835\udc94\ud835\udc8a\ud835\udc8f\ud835\udc86\ud835\udc94\ud835\udc94 \ud835\udc8d\ud835\udc82\ud835\udc98, \ud835\udc8d\ud835\udc82\ud835\udc83\ud835\udc90\ud835\udc93 \ud835\udc8d\ud835\udc82\ud835\udc98, \ud835\udc90\ud835\udc93 \ud835\udc8a\ud835\udc8e\ud835\udc8e\ud835\udc8a\ud835\udc88\ud835\udc93\ud835\udc82\ud835\udc95\ud835\udc8a\ud835\udc90\ud835\udc8f \ud835\udc93\ud835\udc96\ud835\udc8d\ud835\udc86\ud835\udc94. \ud835\udc7b\ud835\udc89\ud835\udc86 \ud835\udc84\ud835\udc89\ud835\udc82\ud835\udc95\ud835\udc83\ud835\udc90\ud835\udc95 \ud835\udc93\ud835\udc86\ud835\udc95\ud835\udc93\ud835\udc8a\ud835\udc86\ud835\udc97\ud835\udc86\ud835\udc94 \ud835\udc93\ud835\udc86\ud835\udc8d\ud835\udc86\ud835\udc97\ud835\udc82\ud835\udc8f\ud835\udc95 \ud835\udc8d\ud835\udc86\ud835\udc88\ud835\udc82\ud835\udc8d \ud835\udc88\ud835\udc96\ud835\udc8a\ud835\udc85\ud835\udc86\ud835\udc8d\ud835\udc8a\ud835\udc8f\ud835\udc86\ud835\udc94, \ud835\udc89\ud835\udc86\ud835\udc8d\ud835\udc91\ud835\udc8a\ud835\udc8f\ud835\udc88 \ud835\udc96\ud835\udc94\ud835\udc86\ud835\udc93\ud835\udc94 \ud835\udc8f\ud835\udc82\ud835\udc97\ud835\udc8a\ud835\udc88\ud835\udc82\ud835\udc95\ud835\udc86 \ud835\udc87\ud835\udc90\ud835\udc93\ud835\udc86\ud835\udc8a\ud835\udc88\ud835\udc8f \ud835\udc8d\ud835\udc86\ud835\udc88\ud835\udc82\ud835\udc8d \ud835\udc94\ud835\udc9a\ud835\udc94\ud835\udc95\ud835\udc86\ud835\udc8e\ud835\udc94 \ud835\udc98\ud835\udc8a\ud835\udc95\ud835\udc89 \ud835\udc86\ud835\udc82\ud835\udc94\ud835\udc86."
+  },
+  {
+    "name": "team 15",
+    "project_name": "ai answerpaper corrector",
+    "repository_url": "https://github.com/Rubinsaj/ai-generator.git",
+    "description": "this is a answer paper corrector website using ai"
+  },
+  {
+    "name": "ABHAY PARAMESWER R",
+    "project_name": "ResQRoute",
+    "repository_url": "https://github.com/abhay-7-7-7/ResqRoute.git",
+    "description": "Introduction Every second counts in a medical emergency. In heavy traffic, ambulances struggle to reach hospitals on time, costing precious lives. Our integrated system combines AI-powered traffic management with Digital Twin technology inside the ambulance to ensure seamless emergency response. Problem Statement\n\nTraffic congestion causes significant delays in emergency response times.\nLack of real-time traffic management leads to inefficiencies in clearing paths for ambulances.\nManual intervention by traffic police is often slow and ineffective.\nMedical professionals in hospitals lack real-time patient data before arrival.\nCritical treatments are delayed due to lack of immediate health insights.\nDoctors often have to make instant decisions with limited patient data, increasing the risk of errors. Proposed Solution: AI-Powered Emergency System Our AI-driven system integrates two key technologies:\nResQRoute: AI-based traffic management that detects ambulances and clears traffic automatically.\nDigital Twin for Health: Inside the ambulance, AI builds a real-time patient clone using medical data to predict their health status and guide doctors before arrival.\nDoctor Preparation System: AI provides hospitals with real-time patient insights, ensuring the medical team is prepared for immediate treatment upon arrival. How It Works\nAmbulance Detection: AI cameras recognize ambulance symbols and prioritize traffic light changes.\nReal-Time Traffic Adjustment: AI controls traffic signals dynamically to create an open path.\nPatient Cloning Inside Ambulance: Medical devices inside the ambulance monitor vital signs and feed data to an AI model to simulate future health conditions.\nDoctor & Hospital Preparation:\nAI provides a real-time patient health clone to doctors.\nDoctors analyze vital trends and predict possible complications before arrival.\nAI suggests probable treatments based on patient history and symptoms.\nHospital staff prepares the necessary operation theaters, ICUs, or emergency rooms based on AI risk assessment.\nOptimized Emergency Care: Predictive analytics help doctors make faster, more accurate decisions for treatment.\n\n\nHere is the website like we deployed using streamlit: https://resqroute.streamlit.app/"
+  },
+  {
+    "name": "Sivanand.M",
+    "project_name": "Agricultural Based Website",
+    "repository_url": "https://github.com/kenasty/SeedSage",
+    "description": "A website that can used for people to learn about farming, learn about various seeds, their development, growth period, current market analysis with AI support"
+  },
+  {
+    "name": "Arathy B S",
+    "project_name": "Intelligent Legal Research for Enhanced Decision Making",
+    "repository_url": "https://github.com/abhiabhi1474/Intelligent-Legal-Research-For-Enhanced-Decision-Making.git",
+    "description": "This project is a Flask-based API designed to analyze legal scenarios, retrieve relevant laws, and predict legal outcomes using Natural Language Processing (NLP) and Machine Learning (ML). It helps users by identifying applicable laws, finding past legal precedents, and estimating case success probabilities."
+  },
+  {
+    "name": "Abhijit S R",
+    "project_name": "Clinomex",
+    "repository_url": "https://github.com/Abhijit-without-h/Clinomex",
+    "description": "A comprehensive tool for analyzing patient data to assess cancer and diabetes risk based on genetic markers and personal health metrics"
   }
 ]
