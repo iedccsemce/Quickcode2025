@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blood Report Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background: linear-gradient(to right, #f8d7da, #ffffff);
+            overflow: auto;
+            position: relative;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            padding: 25px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+        .button {
+            padding: 14px 28px;
+            font-size: 18px;
+            color: white;
+            background-color: #dc3545;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .button:hover {
+            background-color: #c82333;
+            transform: scale(1.07);
+        }
+        #output {
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: 60px;
+            padding: 20px;
+            border-radius: 8px;
+            background: rgba(255, 0, 0, 0.1);
+            text-align: left;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+        #loading {
+            display: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #dc3545;
+        }
+        ul {
+            text-align: left;
+            list-style-type: disc;
+            padding-left: 25px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        h1 {
+            color: #dc3545;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .important-term {
+            color: red;
+            font-weight: bold;
+        }
+        .highlight-status {
+            font-weight: bold;
+            background-color: yellow;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .blood-drop {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: red;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            from {
+                transform: translateY(-10vh);
+                opacity: 0.8;
+            }
+            to {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Blood Report Analyzer</h1>
+    <div class="container">
+        <input type="file" id="fileInput" accept=".pdf,.txt,.docx">
+        <br><br>
+        <button class="button" onclick="uploadFile()">Upload and Analyze</button>
+        <p id="loading">Analyzing... Please wait.</p>
+    </div>
+    <div id="output"></div>
+
+    <script>
+        function uploadFile() {
+            const file = document.getElementById('fileInput').files[0];
+            if (!file) {
+                alert("Please upload a blood report file.");
+                return;
+            }
+            
+            const allowedTypes = ["application/pdf", "text/plain", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+            if (!allowedTypes.includes(file.type)) {
+                alert("Invalid file type. Please upload a PDF, TXT, or DOCX file.");
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append("file", file);
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("output").innerHTML = "";
+            
+            fetch("http://127.0.0.1:5000/analyze", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("loading").style.display = "none";
+                displayBulletPoints(data.summary);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("output").innerHTML = "<p style='color:red;'>Error processing file. Please try again.</p>";
+            });
+        }
+
+        function displayBulletPoints(summary) {
+            let outputDiv = document.getElementById("output");
+            let bulletHTML = "<ul>";
+            
+            let points = summary.split("\n");
+            points.forEach(point => {
+                if (point.trim() !== "") {
+                    let formattedPoint = point.replace(/(\b[A-Za-z ]+\b):/, '<span class="important-term">$1</span>:');
+                    formattedPoint = formattedPoint.replace(/\b(Low|High)\b/, '<span class="highlight-status">$1</span>');
+                    bulletHTML += `<li>${formattedPoint.trim()}</li>`;
+                }
+            });
+            
+            bulletHTML += "</ul>";
+            outputDiv.innerHTML = bulletHTML;
+        }
+
+        function createBloodDrops() {
+            for (let i = 0; i < 20; i++) {
+                let drop = document.createElement("div");
+                drop.classList.add("blood-drop");
+                drop.style.left = Math.random() * 100 + "vw";
+                drop.style.animationDuration = (Math.random() * 3 + 3) + "s";
+                document.body.appendChild(drop);
+            }
+        }
+        createBloodDrops();
+    </script>
+</body>
+</html>
