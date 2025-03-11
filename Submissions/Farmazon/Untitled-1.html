@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Fresh Direct</title>
+    <style>
+        /* Existing CSS styles for the main page */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        nav {
+            background-color: #45a049;
+            padding: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem;
+            background-color: #f4f4f4;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        /* Chatbot CSS */
+        #chatbot {
+            position: fixed;
+            bottom: 80px; /* Adjusted to avoid overlapping with the footer */
+            right: 20px;
+            width: 300px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensure it appears above other elements */
+        }
+
+        #chatbot-header {
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            text-align: center;
+        }
+
+        #chatbot-body {
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        #chatbot-input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FarmAzon</h1>
+    </header>
+
+    <nav>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#farmers">Farmers</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <div class="nav-right">
+            <a href="login.html" class="button">Login</a>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h2>Fresh From Farm to Your Table</h2>
+        <p>Connect directly with local farmers and get fresh produce delivered to your doorstep</p>
+        <a href="categories.html" class="button">Shop Now</a>
+    </section>
+
+    <section class="products">
+        <div class="product-card">
+            <img src="c:\Users\AMANIYA\OneDrive\Desktop\carrot.jpeg" alt="Fresh Carrot">
+            <h3>Carrot</h3>
+            <p>100/kg</p>
+            <button class="button">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="c:\Users\AMANIYA\OneDrive\Desktop\fruits.jpeg" alt="Organic Fruits">
+            <h3>Organic Fruits</h3>
+            <p>50/kg</p>
+            <button class="button">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="c:\Users\AMANIYA\OneDrive\Desktop\eggs.jpeg" alt="Farm Eggs">
+            <h3>Farm Eggs</h3>
+            <p>120/dozen</p>
+            <button class="button">Add to Cart</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 FarmAzon Direct. All rights reserved.</p>
+    </footer>
+
+    <!-- Chatbot HTML -->
+    <div id="chatbot">
+        <div id="chatbot-header">Chatbot</div>
+        <div id="chatbot-body"></div>
+        <input type="text" id="chatbot-input" placeholder="Type a message...">
+    </div>
+
+    <script>
+        // Existing JavaScript for the main page
+        function showLogin(event) {
+            event.preventDefault();
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('loginForm').style.display = 'block';
+        }
+
+        function hideLogin() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('overlay').addEventListener('click', hideLogin);
+
+        // Chatbot JavaScript
+        const chatbotBody = document.getElementById('chatbot-body');
+        const chatbotInput = document.getElementById('chatbot-input');
+
+        chatbotInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const userMessage = chatbotInput.value;
+                chatbotBody.innerHTML += `<div><strong>You:</strong> ${userMessage}</div>`;
+                chatbotInput.value = '';
+
+                // Simulate a bot response
+                setTimeout(() => {
+                    chatbotBody.innerHTML += `<div><strong>Bot:</strong> Hello! How can I help you?</div>`;
+                    chatbotBody.scrollTop = chatbotBody.scrollHeight;
+                }, 1000);
+            }
+        });
+    </script>
+    <div id="cart">
+        <div id="cart-header">Cart</div>
+        <div id="cart-body">
+            <ul id="cart-items"></ul>
+        </div>
+        <div id="cart-footer">
+            <button id="checkout-button" class="button">Checkout</button>
+        </div>
+    </div>
+    <head>
+        <!-- Add this line in the head section -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        
+        <style>
+            /* Add these new styles */
+            .nav-right {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+    
+            .cart-icon {
+                position: relative;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+    
+            .cart-count {
+                position: absolute;
+                top: -8px;
+                right: -8px;
+                background-color: #ff4444;
+                color: white;
+                border-radius: 50%;
+                padding: 2px 6px;
+                font-size: 0.8rem;
+            }
+        </style>
+    </head>
+    <style>
+        #cart {
+            position: fixed;
+            top: 60px;
+            right: -300px;
+            width: 300px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1000;
+        }
+
+        #cart.active {
+            right: 0;
+        }
+
+        #cart-header {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .remove-button {
+            color: #ff4444;
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        #cart-footer {
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .total-price {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <script>
+        let cartItems = [];
+        
+        // Initialize cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartButtons = document.querySelectorAll('.product-card .button');
+            const cartIcon = document.querySelector('.cart-icon');
+            const cart = document.getElementById('cart');
+            const cartCount = document.querySelector('.cart-count');
+
+            // Add to cart button click handler
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const product = {
+                        name: productCard.querySelector('h3').textContent,
+                        price: productCard.querySelector('p').textContent,
+                        image: productCard.querySelector('img').src
+                    };
+                    
+                    addToCart(product);
+                });
+            });
+
+            // Toggle cart visibility
+            cartIcon.addEventListener('click', function() {
+                cart.classList.toggle('active');
+            });
+
+            // Function to add item to cart
+            function addToCart(product) {
+                cartItems.push(product);
+                updateCartDisplay();
+                cart.classList.add('active');
+            }
+
+            // Function to update cart display
+            function updateCartDisplay() {
+                const cartItemsList = document.getElementById('cart-items');
+                cartCount.textContent = cartItems.length;
+                
+                cartItemsList.innerHTML = cartItems.map((item, index) => `
+                    <li class="cart-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>${item.price}</p>
+                        </div>
+                        <button class="remove-button" onclick="removeFromCart(${index})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </li>
+                `).join('');
+
+                updateTotal();
+            }
+
+            // Function to update total price
+            function updateTotal() {
+                const total = cartItems.reduce((sum, item) => {
+                    const price = parseInt(item.price);
+                    return sum + price;
+                }, 0);
+                
+                document.querySelector('.total-price').textContent = `Total: ₹${total}`;
+            }
+        });
+
+        // Function to remove item from cart
+        function removeFromCart(index) {
+            cartItems.splice(index, 1);
+            updateCartDisplay();
+        }
+    </script>
+
+    <div id="cart">
+        <div id="cart-header">Shopping Cart</div>
+        <ul id="cart-items"></ul>
+        <div id="cart-footer">
+            <div class="total-price">Total: ₹0</div>
+            <button class="button">Proceed to Checkout</button>
+        </div>
+    </div>
+</body>
+</html>
